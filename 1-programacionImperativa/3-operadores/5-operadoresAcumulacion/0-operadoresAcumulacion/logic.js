@@ -1,0 +1,13 @@
+x=100;
+console.log(x += 2); 
+console.log(x -= 2);
+console.log(x *= 2);
+console.log(x **= 2);
+console.log(x /= 2);
+console.log(x %= 7);
+console.log(x &= 2);
+console.log(x |= 2);
+console.log(x ^= 2);
+console.log(x <<= 2);
+console.log(x >>= 2);
+console.log(x >>>= 2);

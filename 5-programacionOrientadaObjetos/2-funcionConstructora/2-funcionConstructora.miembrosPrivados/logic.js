@@ -1,0 +1,40 @@
+function Coordenada(x, y) {
+    let _x = x;
+    let _y = y;
+    function getX() {
+        return _x;
+    }
+    function getY() {
+        return _y;
+    }
+    this.isDiagonal = function () {
+        return getX() == getY();
+    }
+}
+console.log(Coordenada);
+console.log(typeof Coordenada);
+for (campo in Coordenada) {
+    console.log("propiedad: " + Coordenada[campo]);
+}
+console.log("---");
+console.log(Coordenada.prototype);
+console.log(typeof Coordenada.prototype);
+for (campo in Coordenada.prototype) {
+    console.log("propiedad: " + Coordenada.prototype[campo]);
+}
+console.log("---");
+for (let coordenada of [new Coordenada(0, 1), new Coordenada(2, 3)]) {
+    console.log(coordenada);
+    console.log(typeof coordenada);
+    console.log(coordenada.x);
+    console.log(coordenada.y);
+    console.log(coordenada.isDiagonal());
+    coordenada.x = 2;
+    coordenada.y = 2;
+    console.log(coordenada.x);
+    console.log(coordenada.y);
+    console.log(coordenada.isDiagonal());
+    for (let campo in coordenada) {
+        console.log(coordenada[campo]);
+    }
+}
