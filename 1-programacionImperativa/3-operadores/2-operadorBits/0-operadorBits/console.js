@@ -75,4 +75,7 @@ class Console {
 }
 
 module.exports.Console = Console;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4d9ecdd3491369056cd3f33d3f3e19e78cedd35e
