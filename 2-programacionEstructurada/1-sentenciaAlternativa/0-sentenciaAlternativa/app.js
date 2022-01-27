@@ -31,3 +31,10 @@ switch(x){
     default:
         console.writeln("otro");    
 }
+
+// EL RESULTADO NO ES EL ESPERADO
+// undefined
+// NaN
+// vulgar
+// mágico
+// otro
