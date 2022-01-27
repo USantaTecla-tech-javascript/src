@@ -1,5 +1,5 @@
-console.writeln((04 >>> 1, 4 % 5, 5 >= 5, false || true)); //true
-console.writeln(04 >>> 1, 4 % 5, 5 >= 5, false || true); //2 4 true true
+console.writeln((04 >>> 1, 4 % 5, 5 >= 5, false \|\| true)); //true
+console.writeln(04 >>> 1, 4 % 5, 5 >= 5, false \|\| true); //2 4 true true
 
 /* efectos laterales */
 let x = 0;
