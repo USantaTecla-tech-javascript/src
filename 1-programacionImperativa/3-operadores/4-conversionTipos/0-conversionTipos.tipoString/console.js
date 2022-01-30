@@ -25,8 +25,6 @@ class Console {
     let input;
     do {
       input = parseInt(this.readString(title));
-      this.writeln("!!!" + input);
-      this.writeln("!!!" + typeof input);
       if (isNaN(input)) {
         console.log('FORMAT ERROR!!! Enter a number formatted value.');
       }
