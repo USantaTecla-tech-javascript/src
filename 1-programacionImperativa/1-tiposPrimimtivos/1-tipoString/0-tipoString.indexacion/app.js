@@ -1,4 +1,4 @@
 const { Console } = require("./console");
 
 const console = new Console();
-console.writeln("Que curioso"[2]);
+console.writeln("Qué curioso"[2]); // é
