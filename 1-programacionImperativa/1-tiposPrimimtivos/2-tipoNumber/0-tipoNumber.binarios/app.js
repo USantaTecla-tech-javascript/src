@@ -27,3 +27,4 @@ console.writeln(4 ** NaN); // NaN
 
 console.writeln(0.1e-7 + 1e7); // 10000000.00000001
 console.writeln(0.1e-8 + 1e8); // 100000000
+console.writeln(0.1 + 0.2); // 0.30000000000000004
