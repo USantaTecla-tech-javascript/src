@@ -15,9 +15,6 @@ for(let i = 0; i < array.length; i++){
 for(let item of array){
     console.writeln(item);
 }
-for(let key in array){
-    console.writeln(array[key]);
-}
 
 for(let i = 0; i < [1,2,3].length; i++){
     console.writeln([1,2,3][i]);
@@ -25,7 +22,5 @@ for(let i = 0; i < [1,2,3].length; i++){
 for(let item of [1,2,3]){
     console.writeln(item);
 }
-for(let key in [1,2,3]){
-    console.writeln(array[key]);
-}
+
 

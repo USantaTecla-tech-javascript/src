@@ -1,40 +1,29 @@
 const { Console } = require("./console");
 
 const console = new Console();
-let x;
+let x = 0;
 
-/* if */
-if (x>0){
+if (x>=0)
     x++;
-}
-console.writeln(x);
+console.writeln(x); // 1
             
-/* if-else */
-if (x>0){
+if (x>1)
     x++;
-} else {
+else
     x--;
-}
-console.writeln(x);
+console.writeln(x); // 0
 
-/* switch */
-x = 2;
 switch(x){
     case 3:
-        console.writeln("esperado");
+        console.writeln("esperado"); // 
         break;
     case 2:
-        console.writeln("vulgar");
+        console.writeln("vulgar"); // 
     case 0:
     case 1:
-        console.writeln("mágico");
+        console.writeln("mágico"); // mágico
+        break;
     default:
-        console.writeln("otro");    
+        console.writeln("otro"); //    
 }
 
-// EL RESULTADO NO ES EL ESPERADO
-// undefined
-// NaN
-// vulgar
-// mágico
-// otro
