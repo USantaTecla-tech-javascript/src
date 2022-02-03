@@ -5,8 +5,7 @@ let identificador = 0;
 console.writeln(`.${identificador}.`); // .0.
 
 let identificadorSinInicializacion;
-console.writeln(`.${identificadorSinInicializacion}.`); // .undefined.
+console.writeln( `.${identificadorSinInicializacion}.`); // .undefined.
 
   //console.writeln( `.${ningunIdentificador}.`); // .undefined.
-
-
+  
