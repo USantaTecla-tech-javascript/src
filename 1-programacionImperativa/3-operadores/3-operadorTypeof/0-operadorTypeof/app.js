@@ -19,5 +19,5 @@ console.writeln(typeof true); // boolean
 console.writeln(typeof undefined); // undefined
 let variable = undefined; 
 console.writeln(typeof variable); // undefined
-let constant = undefined;
+const constant = undefined;
 console.writeln(typeof constant); // undefined

@@ -10,3 +10,6 @@ console.writeln(--x); // 100
 
 console.writeln(- -x); // 100
 console.writeln(+ +x); // 100
+
+console.writeln(++x*2); // 202
+console.writeln(++x*2); // 204

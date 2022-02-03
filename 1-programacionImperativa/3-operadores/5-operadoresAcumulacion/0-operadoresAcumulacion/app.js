@@ -14,3 +14,6 @@ console.writeln(x ^= 2); // 0
 console.writeln(x <<= 2); // 0
 console.writeln(x >>= 2); // 0
 console.writeln(x >>>= 2); // 0
+
+console.writeln(x += 1 * 5); // 5
+console.writeln(x += 1 * 5); // 10
