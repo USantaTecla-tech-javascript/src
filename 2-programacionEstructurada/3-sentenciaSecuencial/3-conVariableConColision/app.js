@@ -1,16 +1,28 @@
 const { Console } = require("./console");
 
 const console = new Console();
-let variable = "nivel0";
-console.writeln(variable); // nivel0
+let nivel = 100;
+console.writeln(`---`);
+nivel++;
+console.writeln(nivel);
+
 {
-  let variable = "nivel1";
-  console.writeln(variable); // nivel1
+  let nivel = 200;    
+  console.writeln(`---`);
+  nivel++;
+  console.writeln(nivel);
   {
-    let variable = "nivel2";
-    console.writeln(variable); // nivel2
-  }
-  console.writeln(variable); // nivel1
+    let nivel = 300;
+    console.writeln(`---`);
+    nivel++;
+    console.writeln(nivel);
+  }    
+   console.writeln(`---`);
+   nivel++;
+   console.writeln(nivel);
 }
-console.writeln(variable); // nivel0
+console.writeln(`---`);
+nivel++;
+console.writeln(nivel);
+
 
