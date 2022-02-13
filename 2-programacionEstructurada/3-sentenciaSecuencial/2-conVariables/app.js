@@ -45,6 +45,8 @@ console.writeln(`---`);
 // console.writeln(nivel1);
 nivel0++;
 console.writeln(nivel0);
+
+console.writeln(`---`);
 {
   console.writeln(nivel0);
   // console.writeln(nivel1);
