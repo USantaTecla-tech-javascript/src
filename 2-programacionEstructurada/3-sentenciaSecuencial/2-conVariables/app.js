@@ -2,7 +2,7 @@ const { Console } = require("./console");
 
 const console = new Console();
 let nivel0 = 100;
- console.writeln(`---`);
+console.writeln(`---`);
 // nivel2++;
 // console.writeln(nivel2);
 // nivel1++;
