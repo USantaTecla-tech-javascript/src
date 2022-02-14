@@ -18,3 +18,9 @@ console.writeln("" || `inicial`); // inicial
 console.writeln(true || `inicial`); // true
 console.writeln(1 || `inicial`); // 1
 console.writeln("cadena" || `inicial`); // cadena
+
+let x;
+ // ...
+console.writeln(x === null ? x : `inicial`);
+console.writeln(x === undefined ? x : `inicial`);
+console.writeln(x === false ? x : `inicial`);
