@@ -12,3 +12,9 @@ console.writeln(1-(1-1)); // ¿1 o -1?
 /* orden de evaluación ¿izquierda a derecha?*/
 console.writeln(5 * (4+4) * 2); // ¿80 o 28?
 console.writeln((5+4) / (4+2)); // ¿1.5 u 8?
+
+let x;
+let y;
+x = y = 0;
+console.writeln(x); // 0
+console.writeln(y); // 0
