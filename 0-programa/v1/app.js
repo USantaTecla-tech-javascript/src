@@ -2,8 +2,8 @@ const { Console } = require("./console"); // node.js
 
 const console = new Console(); // node.js
 console.writeln(/* 
-  saludo 
+  aquí es raro, raro, ... 
 */'Hola, mundo!!! 🌹')
-// console.writeln();
-// ejecutable
+ // console.writeln(); código muerto
+ // ejecutable, típico comentario
 console.writeln('Adios, mundo!!! 🌹');
