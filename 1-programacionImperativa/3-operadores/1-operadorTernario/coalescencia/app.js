@@ -21,6 +21,6 @@ console.writeln("cadena" || `inicial`); // cadena
 
 let x;
  // ...
-console.writeln(x === null ? x : `inicial`);
-console.writeln(x === undefined ? x : `inicial`);
-console.writeln(x === false ? x : `inicial`);
+console.writeln(x === null ? x : `inicial`); // inicial
+console.writeln(x === undefined ? x : `inicial`); // inicial
+console.writeln(x === false ? x : `inicial`); // inicial
