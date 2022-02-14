@@ -1,9 +1,11 @@
-console.writeln(04 & 08); // SyntaxError: Unexpected token '<<'
-console.writeln(04 \| 08);
-console.writeln(04 ^ 08);
-console.writeln(05 ^ 09);
-console.writeln(~ 04);
-console.writeln(04 << 1);
-console.writeln(04 >> 1);
-console.writeln(04 >>> 1);
+const { Console } = require("./console");
 
+const console = new Console();
+console.writeln(~ 4); // -5
+console.writeln(4 & 8); // 0
+console.writeln(4 \| 8); // 12
+console.writeln(4 ^ 8); // 12
+console.writeln(5 ^ 9); // 12
+console.writeln(4 << 1); // 8
+console.writeln(4 >> 1); // 2
+console.writeln(4 >>> 1); // 2
