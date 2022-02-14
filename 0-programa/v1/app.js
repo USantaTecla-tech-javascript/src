@@ -5,5 +5,5 @@ console.writeln(/*
   aquí es raro, raro, ... 
 */'Hola, mundo!!! 🌹')
  // console.writeln(); código muerto
- // ejecutable, típico comentario
+ // ejecutable, típico comentario innecesario
 console.writeln('Adios, mundo!!! 🌹');
