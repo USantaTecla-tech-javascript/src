@@ -11,15 +11,15 @@ function contenedora() {
     console.writeln("contenedora");
 }
 contenedora();
-//local = ...; Error!!!
-//anidada(); Error!!!
+ //local = ...; Error!!!
+ //anidada(); Error!!!
 
 
 let global= 1;
 console.writeln(global);
 let igual = 2;
 console.writeln(igual);
-//console.writeln(local); Error!!! 
+ //console.writeln(local); Error!!! 
 
 function ambito() {
     global--;
@@ -32,13 +32,13 @@ function ambito() {
 }     
 console.writeln(global);
 console.writeln(igual);
-//console.writeln(local); Error!!! 
+ //console.writeln(local); Error!!! 
 ambito();
 console.writeln(global);
 console.writeln(igual);
-//console.writeln(local); Error!!! 
+ //console.writeln(local); Error!!! 
 
-// hoisting    
+ // hoisting    
 withHoisting();
 
 function withHoisting() {
