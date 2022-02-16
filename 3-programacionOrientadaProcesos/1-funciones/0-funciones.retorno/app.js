@@ -1,15 +1,22 @@
 const { Console } = require("./console");
 
 const console = new Console();
+console.writeln(double(3)); // 6 
+console.writeln(factorial(3)); // 6 
+console.writeln(factorial(3)+double(3)); // 12
+console.writeln(double(factorial(3))); // 12
+console.writeln(factorial(double(3))); // 720
+let x = 3;
+console.writeln(x*factorial(x)); // 18 
+
 function double(value) {
     return value * 2;
 }
-console.writeln(double(333))
 
 function factorial(value) {
-    if (value == 0) {
-        return 1;
+    let result = 1;
+    for (let i = 1; i <= value; i++) {
+        result *= i;
     }
-    return value * factorial(value - 1);
+    return result;
 }
-console.writeln(factorial(6))
