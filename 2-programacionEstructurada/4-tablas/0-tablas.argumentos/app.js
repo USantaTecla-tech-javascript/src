@@ -6,6 +6,8 @@ function sum(){
     for(argument of arguments){
         sum += argument;
     }
-    return sum;
+    console.writeln(sum);
 }
-console.writeln(sum(1,2,3,2,3,2,3,2,3,2,3));
+console.writeln(sum()); // 0
+console.writeln(sum(1)); // 1
+console.writeln(sum(1,2,3,4,5)); // 15
