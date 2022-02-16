@@ -15,7 +15,6 @@ console.writeln(parseInt("15*3", 10)); // 15
 console.writeln(parseInt("17", 8)); // 15
 console.writeln(parseInt("1111", 2)); // 15
 console.writeln(parseInt("error", 8)); // NaN
-console.writeln(("0x7", 10)); // NaN
 console.writeln(parseInt("546", 2)); // NaN
 
 console.writeln(isFinite(0)); // true
