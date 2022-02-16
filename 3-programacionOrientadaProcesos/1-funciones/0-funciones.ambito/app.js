@@ -38,16 +38,3 @@ console.writeln(global);
 console.writeln(igual);
  //console.writeln(local); Error!!! 
 
- // hoisting    
-withHoisting();
-
-function withHoisting() {
-    console.writeln("withHoisting");
-    innerWithHoisting();
-    console.writeln("withHoisting");
-
-    function innerWithHoisting() {
-        console.writeln("innerWithHoisting");
-    }    
-};
-
