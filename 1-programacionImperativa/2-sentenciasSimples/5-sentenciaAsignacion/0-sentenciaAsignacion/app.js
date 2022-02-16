@@ -13,3 +13,10 @@ crazyVariable = NaN;
 console.writeln(crazyVariable); // NaN
 crazyVariable = false;
 console.writeln(crazyVariable); // false
+
+let x;
+let y;
+let z = 0;
+// ...
+x = y = z;
+console.writeln(x); // 0
