@@ -6,7 +6,7 @@ function funcion() {
     console.writeln(`mensaje`);
 }
 
-console.writeln(funcion); // ...
+console.writeln(funcion); // function ...
 console.writeln(typeof funcion); // function
 console.writeln(funcion()); // mensaje
 console.writeln(typeof funcion()); // string
