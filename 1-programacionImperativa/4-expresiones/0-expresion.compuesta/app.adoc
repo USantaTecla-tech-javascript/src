@@ -13,3 +13,4 @@ let y = 0;
 console.writeln((x++, y++)); // 0
 console.writeln((x++, y++, "gggg")); // gggg
 console.writeln((x++, y++)); // 2
+console.writeln((x)); // 3
