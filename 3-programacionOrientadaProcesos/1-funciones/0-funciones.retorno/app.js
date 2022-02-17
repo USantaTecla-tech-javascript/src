@@ -13,7 +13,7 @@ console.writeln(x*factorial(x)); // 18
 
 function sinRetorno() {
     console.write(`sin retorno. `);
-    return undefined;
+    return; // undefined
 }
 
 function double(value) {
