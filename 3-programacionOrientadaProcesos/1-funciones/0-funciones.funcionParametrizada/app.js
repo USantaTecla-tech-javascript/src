@@ -7,7 +7,6 @@ function funcion(x, y=0) {
     y++;
     console.writeln(`x:${x}, y:${y}`);
 }
-
 funcion(); // x:undefined, y:0 => x:NaN, y:1
 funcion(-1); // x:-1, y:0 => x:0, y:1
 funcion(undefined); // x:undefined, y:0 => x:NaN, y:1
@@ -35,7 +34,3 @@ function writeln([head, ...tail]){
     console.writeln(`${head} y ${tail.length} más`);
 }
 writeln([1,2,3,4,5,6,7,8]); // 1 y 7 más
-
-
-
-
