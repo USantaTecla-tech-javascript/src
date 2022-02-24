@@ -46,3 +46,17 @@ console.writeln(typeof JSON.parse('{"a":7,"aa":7,"y":{}}'));
 let { m, n } = {n : 666, m : true};
 console.writeln(m);
 console.writeln(n);
+
+
+let x = {
+    a : 0,
+    b : 1
+};
+
+function f({a, b}){
+    console.writeln(`${a} - ${b}`);
+}
+
+f(x);
+f({a:-1, b:true});
+f({a:"que"});

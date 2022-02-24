@@ -9,9 +9,9 @@ function funcion() {
 console.writeln(funcion); // function ...
 console.writeln(typeof funcion); // function
 console.writeln(funcion()); // mensaje
-console.writeln(typeof funcion()); // string
+console.writeln(typeof funcion()); // undefined
 
-auxiliar(); // segunda
+auxiliar(); // primera
 principal(); // segunda
 
 function auxiliar(){
