@@ -1,9 +1,9 @@
 const { Console } = require("./console");
 
 const console = new Console();
+let error;
 let min;
 let max;
-let error;
 do {
   min = console.readNumber(`Introduzca el mínimo: `);
   max = console.readNumber(`Introduzca el máximo: `);

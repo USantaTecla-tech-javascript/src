@@ -22,20 +22,6 @@ do {
     console.writeln(`El mínimo debe ser menor o igual al máximo`);
   }
 } while (error);
-const interval1 = min1 + max1;
-const interval2 = min2 + max2;
-const intersection = interval1 - interval2;
-if (includes(interval2)) {
-    return interval;
-  }
-  if (interval.includes()) {
-    return ;
-  }
-  if (includes(interval.min2)) {
-    return new Interval(interval.min1, max1);
-  }
-  if (includes(interval.max2)) {
-    return new Interval(min1, max1);
-  }
-  return null;
-console.writeln(`El primer intervalo [${min1}, ${max1}] y el segundo intervalo ${max2 - min2} ${intersection ? `SI` : `NO`}`);
+let intersectedMin = min1 > min2 ? min1 : min2; 
+let intersectedMax = max1 < max2 ? max1 : max2;
+console.writeln(`El intervalo [${min1}, ${max1}] intersección con el intervalo [${min2}, ${max2}] será [${intersectedMin}, ${intersectedMax}]`);

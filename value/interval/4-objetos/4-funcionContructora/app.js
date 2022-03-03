@@ -121,21 +121,13 @@ function Interval(min, max) {
     return result;
   };
 
-  this.min = function() {
-    return this.min;
-  };
-
-  this.max = function() {
-    return this.max;
-  };
-
   this.equals = function(interval) {
     return this.min === interval.min && this.max === interval.max;
   };
 
   this.clone = function() {
     return new Interval(this.min, this.max);
-  }
+  };
 
 }
 
