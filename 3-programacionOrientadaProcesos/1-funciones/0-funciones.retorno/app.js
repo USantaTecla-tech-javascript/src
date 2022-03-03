@@ -2,14 +2,15 @@ const { Console } = require("./console");
 
 const console = new Console();
 sinRetorno(); // sin retorno. ...
-console.writeln(sinRetorno() === undefined); // ... sin retorno. true
+console.writeln(sinRetorno() === undefined); // ... sin retorno\n true
+double(3);
 console.writeln(double(3)); // 6 
 console.writeln(factorial(3)); // 6 
 console.writeln(factorial(3)+double(3)); // 12
 console.writeln(double(factorial(3))); // 12
 console.writeln(factorial(double(3))); // 720
-let x = 3;
-console.writeln(x*factorial(x)); // 18 
+let value = 3;
+console.writeln(value*factorial(value)); // 18 
 
 function sinRetorno() {
     console.write(`sin retorno. `);

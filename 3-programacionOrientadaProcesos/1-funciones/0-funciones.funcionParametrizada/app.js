@@ -19,6 +19,11 @@ funcion(y,x); // x:2, y:1 => x:3, y:2
 funcion(x+y*2,x*y-1); // x:5, y:1 => x:6, y:2
 funcion(x,y,666); // x:1, y:2 => x:2, y:3
 
+function writeln([head, ...tail]){
+    console.writeln(`${head} y ${tail.length} más`);
+}
+writeln([1,2,3,4,5,6,7,8]); // 1 y 7 más
+
 function writelnSum(){
     let sum = 0;
     for(argument of arguments){
@@ -29,8 +34,3 @@ function writelnSum(){
 writelnSum(); // 0
 writelnSum(1); // 1
 writelnSum(1,2,3,4,5); // 15
-
-function writeln([head, ...tail]){
-    console.writeln(`${head} y ${tail.length} más`);
-}
-writeln([1,2,3,4,5,6,7,8]); // 1 y 7 más
