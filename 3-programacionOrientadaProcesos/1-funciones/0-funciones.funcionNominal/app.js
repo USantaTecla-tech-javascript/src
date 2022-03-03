@@ -19,7 +19,7 @@ function external() {
     middle();
     sibbling();
     nivel0++;
-    console.writeln(`external nivel0: ${nivel0}`); // 10. external nivel0: 106
+    console.writeln(`external nivel0: ${nivel0}`); // 11. external nivel0: 105
 
     function middle() {
         let nivel1 = 200;
@@ -45,8 +45,13 @@ function external() {
     }
 
     function sibbling() {
+        let nivel0 = 0;
         nivel0++;
-        console.writeln(`sibblings: ${nivel0}`); // 9. sibblings: 105  
+        console.writeln(`sibblings nivel0: ${nivel0}`); // 9. sibblings nivel0: 1  
+        let nivel2 = 0;
+        nivel2++;
+        console.writeln(`sibblings nivel2: ${nivel2}`); // 10. sibblings nivel2: 1  
+
     }
 }
 
