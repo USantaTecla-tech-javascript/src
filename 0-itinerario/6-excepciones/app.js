@@ -1,4 +1,4 @@
-const { Console } = require("./console");
+const { Console } = require("./0-programacionExcepciones/console");
 
 const console = new Console();
 /* captura */
