@@ -1,10 +1,15 @@
 const { Console } = require("./console");
 
 const console = new Console();
-function incGenerator (initial) {
-    let counter = initial;
-    return function () {counter += 1; return counter}
-  };
+function incGenerator(initial) {
+  let counter = initial;
+  return next;
+
+  function next() {
+    counter++;
+    return counter
+  }
+};
 
 const incX = incGenerator(0);
 const incY = incGenerator(1);
