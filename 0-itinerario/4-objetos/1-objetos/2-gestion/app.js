@@ -1,66 +1,63 @@
 const { Console } = require("./console");
 
 const console = new Console();
-/* añadir propiedades */
-x.a = 666;
-x["aa"] = 666; 
-x.b = "campo";
-x["bb"] = "campo";
-x.c = function(){
+let object = {};
+object.a = 666;
+object["aa"] = 666; 
+object.b = "campo";
+object["bb"] = "campo";
+object.c = function(){
         return "método c";
     };
-x["cc"] = function(){
+object["cc"] = function(){
         return "método cc";
     };
-x.y = {};
-console.writeln(x);
-console.writeln(typeof x);
-for(campo in x){
-    console.writeln(x[campo]);
-    console.writeln(typeof x[campo]);
+object.y = {};
+console.writeln(object); // [object Object]
+console.writeln(typeof object); // object
+for(campo in object){
+    console.writeln(object[campo]); // 666 / 666 / campo / campo / function()... / function()... / [object Object]
+    console.writeln(typeof object[campo]); // number / number / string / function / function / object
 }
 
-/* acceso a propiedades */
-console.writeln(x.a);
-console.writeln(x["a"]);
-console.writeln(x.aa);
-console.writeln(x["aa"]);
-console.writeln(x.c);
-console.writeln(typeof x.c);
-console.writeln(x.c());
-console.writeln(typeof x.c());
-console.writeln(x["c"]);
-console.writeln(typeof x["c"]);
-console.writeln(x["c"]());
-console.writeln(typeof x["c"]());
-console.writeln(x["cc"]);
-console.writeln(typeof x["cc"]);    
-console.writeln(x["cc"]());
-console.writeln(typeof x["cc"]());
-console.writeln(x.cc);
-console.writeln(typeof x.cc);    
-console.writeln(x.cc());
-console.writeln(typeof x.cc());
+console.writeln(object.a); // 666
+console.writeln(object["a"]); // 666
+console.writeln(object.aa); // 666
+console.writeln(object["aa"]); // 666
+console.writeln(object.c); // function()...
+console.writeln(typeof object.c); // function
+console.writeln(object.c()); // método c
+console.writeln(typeof object.c()); // string
+console.writeln(object["c"]); // function()...
+console.writeln(typeof object["c"]); // function
+console.writeln(object["c"]()); // método c
+console.writeln(typeof object["c"]()); // string
+console.writeln(object["cc"]); // function()...
+console.writeln(typeof object["cc"]); // function
+console.writeln(object["cc"]()); // método cc
+console.writeln(typeof object["cc"]()); // string
+console.writeln(object.cc); // function()...
+console.writeln(typeof object.cc); // function
+console.writeln(object.cc()); // método cc
+console.writeln(typeof object.cc()); // string
     
-/* modificación de propiedades */
-x.a = 7;
-x["aa"] = 7;
-x.c = function() {
+object.a = 7;
+object["aa"] = 7;
+object.c = function() {
     console.writeln("nueva");
 }
-console.writeln(x);
-console.writeln(typeof x);
-for(campo in x){
-    console.writeln(x[campo]);
-    console.writeln(typeof x[campo]);
+console.writeln(object); // [object Object]
+console.writeln(typeof object); // object
+for(campo in object){
+    console.writeln(object[campo]); // 7 / 7 / campo / campo / function()... / function()...
+    console.writeln(typeof object[campo]); // number / number / string / string / function  / function
 } 
     
-/* eliminación de propiedades */
-delete x.b;
-delete x["bb"];
-console.writeln(x);
-console.writeln(typeof x);
-for(campo in x){
-    console.writeln(x[campo]);
-    console.writeln(typeof x[campo]);
+delete object.b;
+delete object["bb"];
+console.writeln(object); // [object Object]
+console.writeln(typeof object); // object
+for(campo in object){
+    console.writeln(object[campo]); // 7 / 7 / function()... / function()...
+    console.writeln(typeof object[campo]); // number / number / function  / function
 }
