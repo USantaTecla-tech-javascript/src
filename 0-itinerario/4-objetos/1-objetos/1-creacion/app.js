@@ -1,19 +1,20 @@
 const { Console } = require("./console");
 
 const console = new Console();
-/* creación de objeto */ 
-let x = new Object();
-console.writeln(x);
-console.writeln(typeof x);
-for(campo in x){
-    console.writeln(campo);
-    console.writeln(typeof campo);
+let object = {};
+console.writeln(object); // [object Object]
+console.writeln(typeof object); // object
+for(let property in object){
+    console.writeln(property); //
+    console.writeln(typeof property); //
 }
 
-let x = {};
-console.writeln(x);
-console.writeln(typeof x);
-for(campo in x){
-    console.writeln(campo);
-    console.writeln(typeof campo);
+object = new Object();
+console.writeln(object); // [object Object]
+console.writeln(typeof object); // object
+for(let property in object){
+    console.writeln(property); //
+    console.writeln(typeof property); //
 }
+
+
