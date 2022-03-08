@@ -1,62 +1,51 @@
 const { Console } = require("./console");
 
 const console = new Console();
-/* inicilización de objetos */
-let y = {
+let object = {
     a : 666*7,
-    b : "campo",
-    c : function(){
-        console.writeln("método c");
+    b : `valor`,
+    method : function(){
+        console.writeln(`método c`);
     }
 }
-console.writeln(y);
-console.writeln(typeof y);
-for(campo in y){
-    console.writeln(y[campo]);
-    console.writeln(typeof y[campo]);
+console.writeln(object);
+console.writeln(typeof object);
+for(let property in object){
+    console.writeln(object[property]);
+    console.writeln(typeof object[property]);
 }
-console.writeln(y.c());
-console.writeln(typeof y.c());
+console.writeln(object.method());
+console.writeln(typeof object.method());
 
-/* inicilización de objetos por JSON */
-console.writeln("JSON!!!!!!!!!!!!");
-let z = {
+let {a, b} = object;
+console.writeln(`${a} - ${b}`);
+({a, a} = { b : 666, a : "oh"});
+console.writeln(`${a} - ${b}`);
+
+function f({a, b}){
+    console.writeln(`${a} - ${b}`);
+}
+
+f(object);
+f({a:-1, b:true});
+f({a:"que"});
+
+console.writeln(JSON.parse('{"a":7,"aa":7,"y":{}}'));
+console.writeln(typeof JSON.parse('{"a":7,"aa":7,"y":{}}'));
+let jsonObject = {
     "a" : 666*7,
     "b" : "campo",
     "c" : function(){
         console.writeln("método c");
     }
 }
-console.writeln(y);
-console.writeln(typeof y);
-for(campo in y){
-    console.writeln(y[campo]);
-    console.writeln(typeof y[campo]);
+console.writeln(jsonObject);
+console.writeln(typeof jsonObject);
+for(let property in jsonObject){
+    console.writeln(jsonObject[property]);
+    console.writeln(typeof jsonObject[property]);
 }
-console.writeln(y.c());
-console.writeln(typeof y.c());
-
-/* objeto JSON */
-console.writeln(JSON.stringify(z));
-console.writeln(typeof JSON.stringify(z));
-console.writeln(JSON.parse('{"a":7,"aa":7,"y":{}}'));
-console.writeln(typeof JSON.parse('{"a":7,"aa":7,"y":{}}'));
-
-/* inicialización por desestructuración */
-let { m, n } = {n : 666, m : true};
-console.writeln(m);
-console.writeln(n);
-
-
-let x = {
-    a : 0,
-    b : 1
-};
-
-function f({a, b}){
-    console.writeln(`${a} - ${b}`);
-}
-
-f(x);
-f({a:-1, b:true});
-f({a:"que"});
+console.writeln(jsonObject.method());
+console.writeln(typeof jsonObject.method());
+console.writeln(JSON.stringify(jsonObject));
+console.writeln(typeof JSON.stringify(jsonObject));
