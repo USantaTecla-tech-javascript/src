@@ -5,33 +5,36 @@ let object = {
     a : 666*7,
     b : `valor`,
     method : function(){
-        console.writeln(`método c`);
+        console.writeln(`método`);
     }
 }
-console.writeln(object);
-console.writeln(typeof object);
+console.writeln(object); // [object Object]
+console.writeln(typeof object); // object
 for(let property in object){
-    console.writeln(object[property]);
-    console.writeln(typeof object[property]);
+    console.writeln(object[property]); // 4662 / valor / function () ...
+    console.writeln(typeof object[property]); // number / string / function
 }
-console.writeln(object.method());
-console.writeln(typeof object.method());
+
+console.writeln(object.method()); // método
+console.writeln(typeof object.method()); // método\nundefined
 
 let {a, b} = object;
-console.writeln(`${a} - ${b}`);
-({a, a} = { b : 666, a : "oh"});
-console.writeln(`${a} - ${b}`);
+console.writeln(`${a} - ${b}`); // 4662 - valor
+({a, b} = { b : 666, a : "oh"});
+console.writeln(`${a} - ${b}`); // oh - 666
 
 function f({a, b}){
     console.writeln(`${a} - ${b}`);
 }
 
-f(object);
-f({a:-1, b:true});
-f({a:"que"});
+f(object); // 4662 - valor
+f({a:-1, b:true}); // -1 - true
+f({a:"que"}); // que - undefined
 
-console.writeln(JSON.parse('{"a":7,"aa":7,"y":{}}'));
-console.writeln(typeof JSON.parse('{"a":7,"aa":7,"y":{}}'));
+console.writeln(JSON.stringify(object)); // {"a":4662,"b":"campo"}
+console.writeln(typeof JSON.stringify(object)); // string
+console.writeln(JSON.parse('{"a":7,"aa":7,"y":{}}')); // [object Object]
+console.writeln(typeof JSON.parse('{"a":7,"aa":7,"y":{}}')); // object
 let jsonObject = {
     "a" : 666*7,
     "b" : "campo",
@@ -39,13 +42,10 @@ let jsonObject = {
         console.writeln("método c");
     }
 }
-console.writeln(jsonObject);
-console.writeln(typeof jsonObject);
+console.writeln(jsonObject); // [object Object]
+console.writeln(typeof jsonObject); // object
 for(let property in jsonObject){
-    console.writeln(jsonObject[property]);
-    console.writeln(typeof jsonObject[property]);
+    console.writeln(jsonObject[property]); // 4662 / campo / function()...
+    console.writeln(typeof jsonObject[property]); // number / string / function
 }
-console.writeln(jsonObject.method());
-console.writeln(typeof jsonObject.method());
-console.writeln(JSON.stringify(jsonObject));
-console.writeln(typeof JSON.stringify(jsonObject));
+
