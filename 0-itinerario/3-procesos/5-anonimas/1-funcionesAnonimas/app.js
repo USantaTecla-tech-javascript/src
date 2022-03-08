@@ -1,68 +1,57 @@
 const { Console } = require("./console");
 
 const console = new Console();
-console.writeln(typeof function() {
-    console.writeln("anonima");
+console.writeln(typeof function () {
+    console.writeln("anonima"); // function
 });
-console.writeln(function() {
+console.writeln(function () {
     console.writeln("anonima");
-});
-console.writeln(function() {
+}); // function () ...
+console.writeln(function () {
     console.writeln("anonima");
-}());
-console.writeln(typeof function() {
+}()); // anonima
+console.writeln(typeof function () {
     console.writeln("anonima");
-}());
+}()); // anonima\nundefined
 
-/* variables de tipo función */
-function nominal(){
-    console.writeln("nomima");
+function nominal() {
+    console.writeln("nomimal");
     return true;
 }
 
 let f = nominal;
-console.writeln(typeof f);
-console.writeln(f);
-console.writeln(f());
-console.writeln(typeof f());
+console.writeln(typeof f); // function
+console.writeln(f); // function nominal() ...
+console.writeln(f()); // nomimal\ntrue
+console.writeln(typeof f()); // nomimal\nboolean
 
-let g = function() {
-        console.writeln("anonima g");
-    };
-console.writeln(typeof g);
-console.writeln(g);
-console.writeln(g());
-console.writeln(typeof g());
+let g = function () {
+    console.writeln("anonima g");
+};
+console.writeln(typeof g); // function
+console.writeln(g); // function () ...
+console.writeln(g()); // anonima g\n
+console.writeln(typeof g()); // undefined
 
 function gg() {
     console.writeln("nominal gg");
 };
-console.writeln(typeof gg);
-console.writeln(gg);
-console.writeln(gg());
-console.writeln(typeof gg());
+console.writeln(typeof gg); // function
+console.writeln(gg); // function gg() ...
+console.writeln(gg()); // anonimal gg\n
+console.writeln(typeof gg()); // undefined
 
 g = gg;
-console.writeln(typeof g);
-console.writeln(g);
-console.writeln(g());
-console.writeln(typeof g());
+console.writeln(typeof g); // function
+console.writeln(g); // function gg() ...
+console.writeln(g()); // anonimal gg\n
+console.writeln(typeof g()); // undefined
 
-nominal = function() {
-    console.writeln("re-nominal");
+nominal = function () {
+    console.writeln("re-anomina");
 };
-console.writeln(typeof nominal);
-console.writeln(nominal);
-console.writeln(nominal());
-console.writeln(typeof nominal());
+console.writeln(typeof nominal); // function
+console.writeln(nominal); // function () ...
+console.writeln(nominal()); // re-anomina\n
+console.writeln(typeof nominal()); // undefined
 
-/* igualdad por referencia */
-function una() { 
-console.writeln("mensaje");
-}
-function otra() { 
-console.writeln("mensaje");
-}
-console.writeln(una==otra);
-otra = una;
-console.writeln(otra==una); 

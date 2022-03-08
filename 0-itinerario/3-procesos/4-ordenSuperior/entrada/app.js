@@ -16,11 +16,6 @@ function superiorX(f){
 superiorX(normalXA); // A
 superiorX(normalXB); // B
 
-let f = normalXA;
-f(); // A
-f = normalXB;
-f(); // B
-
 function normalYA(){
     return `A`;
 }
@@ -53,3 +48,17 @@ superiorZ(`B`, normalZB); // BB
 superiorZ(`B`, normalZA); // B
 superiorZ(`A`, normalZB); // AA
 
+let f = una;
+f(`first`); // mensaje: first
+f = otra;
+f(`second`); // mensaje: second
+
+function una(msg) {
+    console.writeln(`mensaje: ${msg}`);
+}
+function otra(msg) {
+    console.writeln(`mensaje: ${msg}`);
+}
+console.writeln(una === otra); // false
+otra = una;
+console.writeln(otra === una); // true
