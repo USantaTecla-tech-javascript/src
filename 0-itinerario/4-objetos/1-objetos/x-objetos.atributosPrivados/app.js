@@ -1,27 +1,32 @@
 const { Console } = require("./console");
 
 const console = new Console();
-var Counter = (function() {
-    var privateCounter = 0;
-    function changeBy(val) {
-      privateCounter += val;
+function counterGenerator(value) {
+  return {
+    increment: function () {
+      value++;
+    },
+    decrement: function () {
+      value--;
+    },
+    value: function () {
+      return value;
     }
-    return {
-      increment: function() {
-        changeBy(1);
-      },
-      decrement: function() {
-        changeBy(-1);
-      },
-      value: function() {
-        return privateCounter;
-      }
-    }
-  })();
-  
-  alert(Counter.value()); /* Muestra 0 */
-  Counter.increment();
-  Counter.increment();
-  alert(Counter.value()); /* Muestra 2 */
-  Counter.decrement();
-  alert(Counter.value()); /* Muestra 1 */ 
+  };
+}
+
+let counter = counterGenerator(0);
+console.writeln(counter.value()); // 0 
+counter.increment();
+counter.increment();
+console.writeln(counter.value()); // 2 
+counter.decrement();
+console.writeln(counter.value()); // 1 
+
+counter = counterGenerator(1);
+console.writeln(counter.value()); // 1 
+counter.increment();
+counter.increment();
+console.writeln(counter.value()); // 3 
+counter.decrement();
+console.writeln(counter.value()); // 2 
