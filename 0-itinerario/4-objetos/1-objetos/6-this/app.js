@@ -9,8 +9,8 @@ function createObject(property) {
         property: property,
         other: 0,
         method: function () {
-            private(object);
-            console.writeln(`property: ${object.property} - other: ${object.other}`);
+            private(this);
+            console.writeln(`property: ${this.property} - other: ${this.other}`);
         }
     };
 
