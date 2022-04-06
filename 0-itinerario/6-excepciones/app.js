@@ -1,7 +1,6 @@
 const { Console } = require("./0-programacionExcepciones/console");
 
 const console = new Console();
-/* captura */
 try {
     let error = 5/0;
     console.writeln("no ejecutada");
@@ -11,7 +10,6 @@ try {
     console.writeln("finally");
 }
             
-/* captura y delegación */
 try {
     try {
         let error = 5/0;
@@ -25,7 +23,6 @@ try {
     console.writeln(exception);
 }
             
-/* elevación */
 try {
     throw "exception elevada";
     console.writeln("no ejecutada");

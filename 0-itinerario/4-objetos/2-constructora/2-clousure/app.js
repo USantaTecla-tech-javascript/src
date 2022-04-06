@@ -17,6 +17,4 @@ function Clazz(property) {
         console.writeln(`property: ${property} - other: ${other}`);
     }
 
-
-
 }
