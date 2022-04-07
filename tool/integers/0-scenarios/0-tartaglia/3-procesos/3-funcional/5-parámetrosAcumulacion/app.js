@@ -24,3 +24,10 @@ function rowsToText(rows){
         ``)}`, 
     ``);
 }
+
+function rowsToText2(rows){
+  return rows.reduce(
+    (acum, row) => 
+      `${acum}\n${row.join(`-`)}`, 
+    ``);
+}

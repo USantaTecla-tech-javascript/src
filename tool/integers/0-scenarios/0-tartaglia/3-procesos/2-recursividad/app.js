@@ -10,8 +10,8 @@ function getTartagliaTriangle(height) {
   if (height === 1) {
     return [[1]];
   }
-  let rows = getTartagliaTriangle(height - 1);
-  let lastRow = rows.at(-1);
+  const rows = getTartagliaTriangle(height - 1);
+  const lastRow = rows.at(-1);
   let newRow = [1];
   for (let i = 0; i < lastRow.length - 1; i++) {
     newRow[i + 1] = lastRow[i] + lastRow[i + 1];
@@ -19,13 +19,11 @@ function getTartagliaTriangle(height) {
   return [...rows, [...newRow, 1]];
 }
 
-function rowsToText(rows) {
-  let msg = ``;
-  for (let row of rows) {
-    for (let value of row) {
-      msg += `${value} - `;
-    }
-    msg += `\n`;
-  }
-  return msg;
+function rowsToText(rows){
+  return rows.reduce(
+    (acum, row) => 
+      `${acum}\n${row.reduce(
+        (acum, value) => `${acum} ${value} -`,
+        ``)}`, 
+    ``);
 }
