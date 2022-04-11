@@ -1,11 +1,11 @@
 const { Console } = require("./console");
 
 const console = new Console();
-let identificador = 0;
-console.writeln(`.${identificador}.`); // .0.
+let identifier = 0;
+console.writeln(`.${identifier}.`); // .0.
 
-let identificadorSinInicializacion;
-console.writeln( `.${identificadorSinInicializacion}.`); // .undefined.
+let identifierWithoutInitialization;
+console.writeln( `.${identifierWithoutInitialization}.`); // .undefined.
 
-  //console.writeln( `.${ningunIdentificador}.`); // .undefined.
+//console.writeln( `.${whithoutDeclaration}.`); // .undefined.
   
