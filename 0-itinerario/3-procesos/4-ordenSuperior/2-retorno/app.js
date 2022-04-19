@@ -1,21 +1,22 @@
 const { Console } = require("./console");
 
 const console = new Console();
-function incGenerator(initial) {
-  let counter = initial;
-  return next;
+function selector(direction) {
+  if (direction){
+    return increment;
+  } 
+  return decrement;
 
-  function next() {
-    counter++;
-    return counter
+  function increment(value) {
+    return value + 1;
+  }
+
+  function decrement(value) {
+    return value - 1;
   }
 };
 
-const incX = incGenerator(0);
-const incY = incGenerator(1);
-console.writeln(`${incX()}`); // 1
-console.writeln(`${incX()}`); // 2
-console.writeln(`${incX()}`); // 3
-console.writeln(`${incY()}`); // 2
-console.writeln(`${incY()}`); // 3
-console.writeln(`${incY()}`); // 4
+let operation = selector(true);
+console.writeln(`${operation(1)}`); // 2
+operation = selector(false);
+console.writeln(`${operation(1)}`); // 0
