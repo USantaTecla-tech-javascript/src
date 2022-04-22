@@ -31,21 +31,3 @@ f(object); // 4662 - valor
 f({a:-1, b:true}); // -1 - true
 f({a:"que"}); // que - undefined
 
-console.writeln(JSON.stringify(object)); // {"a":4662,"b":"campo"}
-console.writeln(typeof JSON.stringify(object)); // string
-console.writeln(JSON.parse('{"a":7,"aa":7,"y":{}}')); // [object Object]
-console.writeln(typeof JSON.parse('{"a":7,"aa":7,"y":{}}')); // object
-let jsonObject = {
-    "a" : 666*7,
-    "b" : "campo",
-    "c" : function(){
-        console.writeln("método c");
-    }
-}
-console.writeln(jsonObject); // [object Object]
-console.writeln(typeof jsonObject); // object
-for(let property in jsonObject){
-    console.writeln(jsonObject[property]); // 4662 / campo / function()...
-    console.writeln(typeof jsonObject[property]); // number / string / function
-}
-
