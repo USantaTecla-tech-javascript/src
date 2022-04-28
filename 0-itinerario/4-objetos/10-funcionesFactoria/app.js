@@ -1,10 +1,10 @@
 const { Console } = require("./console");
 
 const console = new Console();
-const object = new Clazz(7);
-object.method();
+const o = createObject(7);
+o.method();
 
-function Clazz(property) {
+function createObject(property) {
     let that = {
         property: property,
         other: 0,

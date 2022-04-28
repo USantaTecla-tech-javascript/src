@@ -1,8 +1,8 @@
 const { Console } = require("./console");
 
 const console = new Console();
-const object = createObject(7);
-object.method();
+const o = createObject(7);
+o.method();
 
 function createObject(property) {
     return {

@@ -1,0 +1,16 @@
+console.writeln(object.c); // function()...
+console.writeln(typeof object.c); // function
+console.writeln(object.c()); // método c
+console.writeln(typeof object.c()); // string
+console.writeln(object["c"]); // function()...
+console.writeln(typeof object["c"]); // function
+console.writeln(object["c"]()); // método c
+console.writeln(typeof object["c"]()); // string
+console.writeln(object["cc"]); // function()...
+console.writeln(typeof object["cc"]); // function
+console.writeln(object["cc"]()); // método cc
+console.writeln(typeof object["cc"]()); // string
+console.writeln(object.cc); // function()...
+console.writeln(typeof object.cc); // function
+console.writeln(object.cc()); // método cc
+console.writeln(typeof object.cc()); // string

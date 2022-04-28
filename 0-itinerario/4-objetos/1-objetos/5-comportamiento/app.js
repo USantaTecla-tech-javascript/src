@@ -1,20 +1,19 @@
 const { Console } = require("./console");
 
 const console = new Console();
-const object = createObject(7);
-object.method();
+const o = createObject(7);
+o.method();
 
 function createObject(property) {
-    const object = {
+    let returned = {
         property: property,
-        other: 0
+        other: 0,
+        method : function () {
+            private(returned);
+            console.writeln(`property: ${returned.property} - other: ${returned.other}`);
+        }
     };
-
-    object.method = function () {
-        private(object);
-        console.writeln(`property: ${object.property} - other: ${object.other}`);
-    }
-    return object;
+    return returned;
 
     function private(object){
         object.property++;

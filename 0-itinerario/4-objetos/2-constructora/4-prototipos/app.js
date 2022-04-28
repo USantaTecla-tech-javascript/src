@@ -16,5 +16,5 @@ private = function (object) {
     object.other++;
 };
 
-const object = new Clazz(7);
-object.method();
+const o = new Clazz(7);
+o.method();
