@@ -1,6 +1,3 @@
-const { Console } = require("./console");
-
-const console = new Console();
 
 class Person {
 
@@ -15,7 +12,7 @@ class Person {
   }
 
   greeting = function () {
-    console.writeln(`Hi! I'm ${this.name.first}.`);
+    console.log(`Hi! I'm ${this.name.first}.`);
   }
 
   bio = function () {
@@ -41,11 +38,11 @@ class Person {
         }
       }
     }
-    console.writeln(string);
+    console.log(string);
   }
 
   farewell = function () {
-    console.writeln(this.name.first + ' has left the building. Bye for now!');
+    console.log(this.name.first + ' has left the building. Bye for now!');
   }
 
 }
@@ -54,8 +51,8 @@ let person = new Person('Tammi', 'Smith', 17, 'female', ['music', 'skiing', 'kic
 person.greeting();
 person.bio();
 person.farewell();
-console.writeln(typeof person);
-console.writeln(person instanceof Person);
+console.log(typeof person);
+console.log(person instanceof Person);
 
 class Teacher extends Person {
 
@@ -71,7 +68,7 @@ class Teacher extends Person {
     } else if (this.gender === 'female' || this.gender === 'Female' || this.gender === 'f' || this.gender === 'F') {
       prefix = 'Mrs.';
     }
-    console.writeln(`Hello. My name is ${prefix} ${this.name.last}, and I teach ${this.subject}.`);
+    console.log(`Hello. My name is ${prefix} ${this.name.last}, and I teach ${this.subject}.`);
   }
 
 }
@@ -80,9 +77,9 @@ let teacher = new Teacher('Dave', 'Griffiths', 31, 'male', ['football', 'cookery
 teacher.greeting();
 teacher.bio();
 teacher.farewell();
-console.writeln(typeof teacher);
-console.writeln(teacher instanceof Person);
-console.writeln(teacher instanceof Teacher);
+console.log(typeof teacher);
+console.log(teacher instanceof Person);
+console.log(teacher instanceof Teacher);
 
 class Student extends Person {
 
@@ -91,7 +88,7 @@ class Student extends Person {
   }
 
   greeting = function () {
-    console.writeln(`Yo! I'm ${this.name.first}.`);
+    console.log(`Yo! I'm ${this.name.first}.`);
   }
 
 }
@@ -100,6 +97,14 @@ let student = new Student('Liz', 'Sheppard', 17, 'female', ['ninjitsu', 'air cad
 student.greeting();
 student.bio();
 student.farewell();
-console.writeln(typeof student);
-console.writeln(student instanceof Person);
-console.writeln(student instanceof Student);
+console.log(typeof student);
+console.log(student instanceof Person);
+console.log(student instanceof Student);
+console.log(student.prototype);
+console.log(Student.prototype);
+for(let property in Student.prototype.keys){
+  console.log(property);
+}
+for(let property in student.keys){
+  console.log(property);
+}
