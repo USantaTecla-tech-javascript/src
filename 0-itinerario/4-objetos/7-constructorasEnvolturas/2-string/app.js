@@ -1,14 +1,9 @@
 const { Console } = require("./console");
 
 const console = new Console();
-// console.writeln(patternObject.match(`abcdefabc`)); // 
-// console.writeln(patternObject.match(`a b c d e f a b c`)); // 
-// console.writeln(patternString.match(`abcdefabc`)); // 
-// console.writeln(patternString.match(`a b c d e f a b c`)); // 
+let regExp = /[A-E][A-E]/gi; 
 const string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-//var expresion = /[A-E]/gi;
-var regExp = new RegExp(`[A-E]`,`gi`);
-console.writeln(string.match(regExp));
+console.writeln(string.match(regExp)); // AB,CD,ab,cd
 
 // matchAll
 // search

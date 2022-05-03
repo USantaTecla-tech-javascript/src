@@ -11,10 +11,10 @@ function getFibonacciIterator(maxIndex) {
         done: index === maxIndex
       };
       if (!result.done) {
-        [previous, current] = [current, (previous + current)];
         result = {
-          value: previous
+          value: current
         };
+        [previous, current] = [current, (previous + current)];
         index++;
       }
       return result;

@@ -28,10 +28,10 @@ function writelnWhile(iterable) {
   }
   console.writeln(`:${msg.slice(0,msg.length-2)}.`);
 }
-writelnWhile([]);
-writelnWhile([1, 2, 3, 4, 5]);
-writelnWhile(``);
-writelnWhile(`hola`);
+writelnWhile([]); // :.
+writelnWhile([1, 2, 3, 4, 5]); // :1, 2, 3, 4, 5.
+writelnWhile(``); // :.
+writelnWhile(`hola`); // :h, o, l, a.
 
 function writelnDoWhile(iterable) {
   const iterator = getIterator(iterable);
@@ -45,7 +45,7 @@ function writelnDoWhile(iterable) {
   } while (!item.done);
   console.writeln(`:${msg.slice(0,msg.length-2)}.`);
 }
-writelnDoWhile([]);
-writelnDoWhile([1, 2, 3, 4, 5]);
-writelnDoWhile(``);
-writelnDoWhile(`hola`);
+writelnDoWhile([]); // :.
+writelnDoWhile([1, 2, 3, 4, 5]); // :1, 2, 3, 4, 5.
+writelnDoWhile(``); // :.
+writelnDoWhile(`hola`); // :h, o, l, a.
