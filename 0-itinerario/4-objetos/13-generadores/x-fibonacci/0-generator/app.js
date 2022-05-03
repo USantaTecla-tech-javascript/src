@@ -2,15 +2,15 @@ const { Console } = require("./console");
 
 const console = new Console();
 function* getFibonacciIterator() {
-  let previous = 0;
-  let current = 1;
+  let current = 0;
+  let next = 1;
   while (true) {
-    [previous, current] = [current, current + previous];
-    yield previous;
+    [current, next] = [next, next + current];
+    yield current;
   }
 }
 
-var fibonacciIterator = getFibonacciIterator();
+let fibonacciIterator = getFibonacciIterator();
 console.writeln(fibonacciIterator.next().value);     // 1
 console.writeln(fibonacciIterator.next().value);     // 1
 console.writeln(fibonacciIterator.next().value);     // 2

@@ -15,7 +15,7 @@ function* getFibonacciIterator() {
   }
 }
 
-var fibonacciIterator = getFibonacciIterator();
+let fibonacciIterator = getFibonacciIterator();
 console.writeln(fibonacciIterator.next().value);     // 1
 console.writeln(fibonacciIterator.next().value);     // 1
 console.writeln(fibonacciIterator.next().value);     // 2
