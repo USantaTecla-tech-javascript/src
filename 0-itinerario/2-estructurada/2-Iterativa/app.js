@@ -12,8 +12,8 @@ do {
 console.writeln(x); // 3
 
 for (let i = 0; i < 3; i++)
-    console.writeln(i+1); // 1, 2, 3
+    console.writeln(i + 1); // 1, 2, 3
 
-for (let i = 3; 0 < i; i--)
-    console.writeln(i); // 3, 2, 1
+for (let i = 0, j = 9; i < j; i++, j--)
+    console.writeln(`${i} - ${j}`); // 0 - 9 / 1 - 8 / 2 - 7 / 3 - 6 / 4 - 5
 

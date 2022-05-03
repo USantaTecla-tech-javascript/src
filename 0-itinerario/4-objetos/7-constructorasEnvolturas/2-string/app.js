@@ -5,14 +5,13 @@ const console = new Console();
 // console.writeln(patternObject.match(`a b c d e f a b c`)); // 
 // console.writeln(patternString.match(`abcdefabc`)); // 
 // console.writeln(patternString.match(`a b c d e f a b c`)); // 
-var cadena = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+const string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 //var expresion = /[A-E]/gi;
-var expresion = new RegExp(`[A-E]`,`gi`);
-var array_emparejamientos = cadena.match(expresion);
-console.writeln(array_emparejamientos);
+var regExp = new RegExp(`[A-E]`,`gi`);
+console.writeln(string.match(regExp));
 
-matchAll
-search
-replace
-replaceAll
-split
+// matchAll
+// search
+// replace
+// replaceAll
+// split
