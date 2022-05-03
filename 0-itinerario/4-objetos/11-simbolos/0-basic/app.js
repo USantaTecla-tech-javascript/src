@@ -3,7 +3,9 @@ const { Console } = require("./console");
 const console = new Console();
 console.writeln(Symbol); // function Symbol() ...
 console.writeln(typeof Symbol); // function
-// let symbol = new Symbol(); // TypeError
+ // let symbol = new Symbol(); // TypeError
+console.writeln(typeof Symbol()); // symbol
+console.writeln(Symbol() instanceof Symbol); // false
 
 let withoutDescriptionSymbol1 = Symbol();
 console.writeln(withoutDescriptionSymbol1.toString()); // Symbol()
