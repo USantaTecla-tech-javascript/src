@@ -25,13 +25,20 @@ const Fibonacci = (maxIndex) => (
     }
   }
 );
-msg = ``;
+let msg = ``;
 for (let item of Fibonacci(1)) {
   msg += `${item}, `;
 }
 console.writeln(`:${msg.slice(0, msg.length - 2)}.`);
 msg = ``;
 for (let item of Fibonacci(10)) {
+  msg += `${item}, `;
+}
+console.writeln(`:${msg.slice(0, msg.length - 2)}.`);
+
+const array = [...Fibonacci(5)];
+msg = ``;
+for (let item of array) {
   msg += `${item}, `;
 }
 console.writeln(`:${msg.slice(0, msg.length - 2)}.`);
