@@ -21,15 +21,14 @@ function getCountryInfo(code, callback) {
 }
 
 function showErrorOrCountry(err, country) {
-  console.log("************************* showErrorOrCountry");
   if (err) {
     console.log("Error: " + err.message);
   } else {
     for (let key in country) {
       console.log(`${key}: ${country[key]}`);
     }
+    console.log(`\n`);
   }
-  console.log("************************* showErrorOrCountry");
 }
 
 function getBordersInfo(code, callback) {
@@ -39,7 +38,6 @@ function getBordersInfo(code, callback) {
     } else {
       let globalErr = false;
       let borders = [];
-      console.log("LECHUGAS " + country.borders.length);
       for (let code of country.borders) {
         console.log("!!!!!!!!" + code);
         getCountryInfo(code, function (err2, countryBorder) {
@@ -51,7 +49,6 @@ function getBordersInfo(code, callback) {
             if (!globalErr) {
               borders.push(countryBorder);
               if (borders.length === country.borders.length) {
-                console.log("PATATAS" + borders.length + " " + country.borders.length);
                 callback(undefined, borders);
               }
             }
@@ -63,7 +60,6 @@ function getBordersInfo(code, callback) {
 }
 
 function showErrorOrCountries(err, countries) {
-  console.log("************** showErrorOrCountries **********");
   if (err) {
     console.log("Error: " + err.message);
   } else {
@@ -71,7 +67,6 @@ function showErrorOrCountries(err, countries) {
       showErrorOrCountry(null, country);
     }
   }
-  console.log("************** showErrorOrCountries **********");
 }
 
 getBordersInfo("ESP", showErrorOrCountries)

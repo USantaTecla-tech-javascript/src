@@ -23,21 +23,19 @@ function getCountryInfo(code) {
 }
 
 function showErrorOrCountry(err, country) {
-  console.log("************************* showErrorOrCountry");
   if (err) {
     console.log("Error: " + err.message);
   } else {
     for (let key in country) {
       console.log(`${key}: ${country[key]}`);
     }
+    console.log(`\n`);
   }
-  console.log("************************* showErrorOrCountry");
 }
 
 async function getBordersInfo(code) {
   let country = await getCountryInfo(code);
   let borders = [];
-  console.log("LECHUGAS " + country.borders.length);
   for (let code of country.borders) {
     console.log("!!!!!!!!" + code);
     let countryBorder = await getCountryInfo(code);
@@ -47,7 +45,6 @@ async function getBordersInfo(code) {
 }
 
 // function showErrorOrCountries(err, countries) {
-//   console.log("************** showErrorOrCountries **********");
 //   if (err) {
 //     console.log("Error: " + err.message);
 //   } else {
@@ -55,7 +52,6 @@ async function getBordersInfo(code) {
 //       showErrorOrCountry(null, country);
 //     }
 //   }
-//   console.log("************** showErrorOrCountries **********");
 // }
 
 async function main() {

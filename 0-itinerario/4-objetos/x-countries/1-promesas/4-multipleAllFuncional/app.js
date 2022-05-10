@@ -23,15 +23,14 @@ function getCountryInfo(code) {
 }
 
 function showErrorOrCountry(err, country) {
-  console.log("************************* showErrorOrCountry");
   if (err) {
     console.log("Error: " + err.message);
   } else {
     for (let key in country) {
       console.log(`${key}: ${country[key]}`);
     }
+    console.log(`\n`);
   }
-  console.log("************************* showErrorOrCountry");
 }
 
 function getBordersInfo(code) {
@@ -41,7 +40,6 @@ function getBordersInfo(code) {
 }
 
 // function showErrorOrCountries(err, countries) {
-//   console.log("************** showErrorOrCountries **********");
 //   if (err) {
 //     console.log("Error: " + err.message);
 //   } else {
@@ -49,7 +47,6 @@ function getBordersInfo(code) {
 //       showErrorOrCountry(null, country);
 //     }
 //   }
-//   console.log("************** showErrorOrCountries **********");
 // }
 
 getBordersInfo("ESP")

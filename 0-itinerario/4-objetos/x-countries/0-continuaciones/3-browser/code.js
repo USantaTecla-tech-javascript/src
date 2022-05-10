@@ -14,15 +14,14 @@ function getCountryInfo(code, callback) {
 }
 
 function showErrorOrCountry(err, country) {
-  console.log("************************* showErrorOrCountry");
   if (err) {
     console.log("Error: " + err.message);
   } else {
     for (let key in country) {
       console.log(`${key}: ${country[key]}`);
     }
+    console.log(`\n`);
   }
-  console.log("************************* showErrorOrCountry");
 }
 
 function main() {
