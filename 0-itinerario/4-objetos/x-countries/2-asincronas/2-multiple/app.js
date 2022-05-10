@@ -3,7 +3,6 @@ const https = require('https');
 function getCountryInfo(code) {
   return new Promise((resolve, reject) => {
     const url = `https://restcountries.com/v3.1/alpha/${code}`;
-    console.log("getCountryInfo " + url);
     https.get(url, (resp) => {
       let data = '';
 
@@ -37,7 +36,6 @@ async function getBordersInfo(code) {
   let country = await getCountryInfo(code);
   let borders = [];
   for (let code of country.borders) {
-    console.log("!!!!!!!!" + code);
     let countryBorder = await getCountryInfo(code);
     borders.push(countryBorder);
   }
