@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>this - global</title>
+</head>
+
+<body id="body"></body>
+<script>
+  "use strict"
+  function getThis(){
+    return this;
+  }
+  console.log(getThis() === this);
+  console.log(getThis() === window);
+  console.log(getThis() === this.window);
+
+  function getData(){
+    return `${this.data} - ${window.data}`;
+  }
+
+  var data = "global value";
+  // console.log(getData()); // Uncaught TypeError: Cannot read properties of undefined (reading 'data')
+
+  let object = {
+    data : "property value"
+  }
+  console.log(getData.call(object)); // property value - global value
+  console.log(getData.apply(object)); // property value - global value
+</script>
+
+</html>

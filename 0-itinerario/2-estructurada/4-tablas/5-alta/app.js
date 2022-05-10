@@ -32,3 +32,17 @@ for(let item of array){
 console.writeln(` with length: ${array.length}`); // ... with length: 10
 console.writeln(array[-1]); // -10
 
+console.writeln("BAJA --------");
+for(let i=-1; i<array.length; i++){
+    console.writeln(array[i]);
+}
+delete array[1];
+for(let i=-1; i<array.length; i++){
+    console.writeln(array[i]);
+}
+delete array[9];
+for(let i=-1; i<array.length; i++){
+    console.writeln(array[i]);
+}
+
+

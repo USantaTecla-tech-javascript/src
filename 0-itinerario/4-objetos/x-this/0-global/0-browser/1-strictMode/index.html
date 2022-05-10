@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>this - global</title>
+</head>
+
+<body id="body"></body>
+<script>
+  "use strict"
+  console.log(this === window); // true
+  console.log(this === this.window); // true
+  
+  var first = 1;
+  console.log(first); // 1
+  console.log(this.first); // 1
+  console.log(window.first); // 1
+  console.log(this.window.first); // 1
+  
+  // second = 2;
+  // console.log(second); // Uncaught ReferenceError: second is not defined
+  console.log(this.second); // undefinded
+  console.log(window.second); // undefinded
+  console.log(this.window.second); // undefinded
+  
+  this.third = 3;
+  console.log(third); // 3  
+  console.log(this.third); // 3
+  console.log(window.third); // 3
+  console.log(this.window.third); // 3
+
+  let fourth = 4;
+  console.log(fourth); // 4 
+  console.log(this.fourth); // undefinded
+  console.log(window.fourth); // undefinded
+  console.log(this.window.fourth); // undefinded
+</script>
+
+</html>
