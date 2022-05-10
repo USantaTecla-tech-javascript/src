@@ -38,16 +38,6 @@ function getBordersInfo(code) {
         Promise.all(country.borders.map(code => getCountryInfo(code))));
 }
 
-// function showErrorOrCountries(err, countries) {
-//   if (err) {
-//     console.log("Error: " + err.message);
-//   } else {
-//     for (let country of countries) {
-//       showErrorOrCountry(null, country);
-//     }
-//   }
-// }
-
 getBordersInfo("ESP")
   .then(countries => {
     for (let country of countries) {

@@ -21,17 +21,6 @@ async function getCountryInfo(code) {
   });
 }
 
-// function showErrorOrCountry(err, country) {
-//   if (err) {
-//     console.log("Error: " + err.message);
-//   } else {
-//     for (let key in country) {
-//       console.log(`${key}: ${country[key]}`);
-//     }
-//     console.log(`\n`);
-//   }
-// }
-
 async function main() {
 try {
   let country = await getCountryInfo("ESP");
@@ -41,7 +30,7 @@ try {
 } catch (err) {
   console.log("Error: " + err.message);
 };
-// console.log("Petición realizada"); no tiene hueco, se comporta como bloqueante
 }
 
 main();
+console.log("Petición realizada");

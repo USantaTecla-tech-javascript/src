@@ -21,17 +21,6 @@ function getCountryInfo(code) {
   });
 }
 
-// function showErrorOrCountry(err, country) {
-//   if (err) {
-//     console.log("Error: " + err.message);
-//   } else {
-//     for (let key in country) {
-//       console.log(`${key}: ${country[key]}`);
-//     }
-//     console.log(`\n`);
-//   }
-// }
-
 getCountryInfo("ESP")
   .then(country => {
     for (let key in country) {

@@ -41,16 +41,6 @@ async function getBordersInfo(code) {
   return await Promise.all(bordersPromises);
 }
 
-// function showErrorOrCountries(err, countries) {
-//   if (err) {
-//     console.log("Error: " + err.message);
-//   } else {
-//     for (let country of countries) {
-//       showErrorOrCountry(null, country);
-//     }
-//   }
-// }
-
 async function main() {
   try {
     let countries = await getBordersInfo("ESP");
@@ -60,7 +50,7 @@ async function main() {
   } catch (err) {
     console.log("Error: " + err.message);
   };
-  // console.log("Peticion realizada"); no tiene hueco
 }
 
 main();
+console.log("Peticion realizada");
