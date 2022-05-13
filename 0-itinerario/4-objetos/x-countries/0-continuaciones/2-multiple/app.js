@@ -58,7 +58,7 @@ function getBordersInfo(code, callback) {
 
 function showErrorOrCountries(err, countries) {
   if (err) {
-    console.log("Error: " + err.message);
+    console.log(err);
   } else {
     for (let country of countries) {
       showErrorOrCountry(null, country);
@@ -66,5 +66,5 @@ function showErrorOrCountries(err, countries) {
   }
 }
 
-getBordersInfo("ESP", showErrorOrCountries)
+getBordersInfo("FRA", showErrorOrCountries)
 console.log("Peticion realizada");

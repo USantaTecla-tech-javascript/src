@@ -1,6 +1,7 @@
 {
   "name": "mastermind.solution.javascript",
   "version": "1.0.0",
+
   "description": "mastermind using NodeJs",
   "main": "mastermind.js",
   "scripts": {

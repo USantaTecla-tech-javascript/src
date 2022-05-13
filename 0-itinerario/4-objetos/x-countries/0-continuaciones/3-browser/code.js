@@ -15,7 +15,7 @@ function getCountryInfo(code, callback) {
 
 function showErrorOrCountry(err, country) {
   if (err) {
-    console.log("Error: " + err.message);
+    console.log(err);
   } else {
     for (let key in country) {
       console.log(`${key}: ${country[key]}`);
@@ -25,7 +25,7 @@ function showErrorOrCountry(err, country) {
 }
 
 function main() {
-  getCountryInfo("ESP", showErrorOrCountry);
+  getCountryInfo("xxx", showErrorOrCountry);
   console.log("Petición realizada");
 }
 
