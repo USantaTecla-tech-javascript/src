@@ -1,0 +1,12 @@
+{
+  "name": "console-mpds",
+  "version": "1.0.4",
+  "description": "Make easier the input / output in Javascript NodeJS console programs.",
+  "main": "console.js",
+  "keywords": ["console", "input", "output", "readline", "writeline"],
+  "author": "Luis Fernández Muñoz",
+  "license": "ISC",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}
