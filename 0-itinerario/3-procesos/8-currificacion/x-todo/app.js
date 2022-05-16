@@ -17,7 +17,6 @@ function curry2(fn, ...args) {
 }
 
 function curry3(func) {
-
     return function curried(...args) {
         if (args.length >= func.length) {
             return func.apply(this, args);

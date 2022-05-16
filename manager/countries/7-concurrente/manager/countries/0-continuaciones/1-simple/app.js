@@ -30,5 +30,5 @@ function showErrorOrCountry(err, country) {
   }
 }
 
-getCountryInfo("xxx", showErrorOrCountry);
+getCountryInfo("ESP", showErrorOrCountry);
 console.log("Petición realizada");

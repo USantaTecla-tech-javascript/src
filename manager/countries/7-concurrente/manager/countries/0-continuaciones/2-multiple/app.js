@@ -66,5 +66,5 @@ function showErrorOrCountries(err, countries) {
   }
 }
 
-getBordersInfo("FRA", showErrorOrCountries)
+getBordersInfo("ESP", showErrorOrCountries)
 console.log("Peticion realizada");
