@@ -59,12 +59,11 @@ console.writeln(flechaSoloRetorno(1));
 console.writeln(sum(1, 10, (x) => { return 2*x; }));
 console.writeln(sum(1, 10, x => { return 2*x; }));
 console.writeln(sum(1, 10, x => 2*x));
-console.writeln(sumatorio(1, 10, double));
 
-function sum(from, to, next) {
+function sum(from, to, operation) {
   let result = 0;
   for(let i=from; i<=to; i++){
-		result += next(i);
+		result += operation(i);
   }
   return result;
 }
@@ -72,3 +71,9 @@ function sum(from, to, next) {
 let double = function(x) { 
   return 2*x; 
 }
+
+console.writeln(sum(1, 10, double));
+
+
+
+
