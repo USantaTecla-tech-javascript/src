@@ -8,14 +8,14 @@ function createObject(property) {
     let returned = {
         property: property,
         other: 0,
-        method : function () {
+        method: function () {
             private(returned);
             console.writeln(`property: ${returned.property} - other: ${returned.other}`);
         }
     };
     return returned;
 
-    function private(object){
+    function private(object) {
         object.property++;
         object.other++;
     }

@@ -3,8 +3,6 @@ const { Console } = require("./console");
 const console = new Console();
 const o = new Clazz(7);
 o.method();
-console.writeln(o.constructor);
-
 
 function Clazz(property) {
     this.property = property;

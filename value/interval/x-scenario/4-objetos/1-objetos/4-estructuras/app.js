@@ -5,16 +5,20 @@ const intervals = randomIntervals(10);
 const tests = [
   interval =>
     `toString(${toString(interval)}) => ${toString(interval)}`,
+
   (interval, index) => {
     const value = index - intervals.length / 2;
     return `shifted(${toString(interval)}, ${value}) => ${toString(shifted(interval, value))}`
   },
+
   interval =>
     `symmetrical(${toString(interval)}) => ${toString(symmetrical(interval))}`,
+
   (interval, index, intervals) => {
     const next = (index + 1) % intervals.length;
     return `adjust(${toString(interval)}, ${toString(intervals[next])}) => ${toString(adjust(interval, intervals[next]))}`;
   },
+  
   (interval, index) =>
     `scale(${toString(interval)}, ${index}) => ${toString(scale(interval, index))}`,
   (interval, index, intervals) => {

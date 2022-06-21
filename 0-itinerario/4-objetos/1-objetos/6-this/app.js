@@ -6,9 +6,9 @@ o.method();
 
 function createObject(property) {
     return {
-        property: property,
+        property,
         other: 0,
-        method: function () {
+        method () {
             private(this);
             console.writeln(`property: ${this.property} - other: ${this.other}`);
         }
