@@ -1,5 +1,8 @@
 const https = require('https');
 
+getCountryInfo("ESP", showErrorOrCountry);
+console.log("Petición realizada");
+
 function getCountryInfo(code, callback) {
   const url = `https://restcountries.com/v3.1/alpha/${code}`;
   https.get(url, (resp) => {
@@ -30,5 +33,4 @@ function showErrorOrCountry(err, country) {
   }
 }
 
-getCountryInfo("ESP", showErrorOrCountry);
-console.log("Petición realizada");
+
