@@ -1,22 +1,25 @@
 const { Console } = require("./console");
 
 const console = new Console();
-const o = createObject(7);
-o.method();
+const object = createObject(1);
+object.publicInstanceMethod();
+object.publicAttributeX = 666;
+console.writeln(`object.publicAttributeX: ${object.publicAttributeX}`);
+object.publicInstanceMethod();
 
-function createObject(property) {
+function createObject(parameter) {
     let returned = {
-        property: property,
-        other: 0,
-        method: function () {
-            private(returned);
-            console.writeln(`property: ${returned.property} - other: ${returned.other}`);
+        publicAttributeX: parameter,
+        publicAttributeY: 0,
+        publicInstanceMethod: function () {
+            privateFunction(returned);
+            console.writeln(`publicAttributeX: ${returned.publicAttributeX} - publicAttributeY: ${returned.publicAttributeY}`);
         }
     };
     return returned;
 
-    function private(object) {
-        object.property++;
-        object.other++;
+    function privateFunction(object) {
+        object.publicAttributeX++;
+        object.publicAttributeY++;
     }
 }

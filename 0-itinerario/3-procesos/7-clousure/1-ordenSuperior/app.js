@@ -3,7 +3,7 @@ const { Console } = require("./console");
 const console = new Console();
 function incGenerator(initial) {
   let counter = initial;
-  return next;
+  return { next };
 
   function next() {
     counter++;
@@ -12,10 +12,11 @@ function incGenerator(initial) {
 }
 
 const incX = incGenerator(0);
-console.writeln(`${incX()}`); // 1
-console.writeln(`${incX()}`); // 2
-console.writeln(`${incX()}`); // 3
+console.writeln(`${incX.next()}`); // 1
+console.writeln(`${incX.next()}`); // 2
+console.writeln(`${incX.next()}`); // 3
+console.writeln(incX.counter);
 const incY = incGenerator(1);
-console.writeln(`${incY()}`); // 2
-console.writeln(`${incY()}`); // 3
-console.writeln(`${incY()}`); // 4
+console.writeln(`${incY.next()}`); // 2
+console.writeln(`${incY.next()}`); // 3
+console.writeln(`${incY.next()}`); // 4

@@ -1,20 +1,21 @@
 const { Console } = require("./console");
 
 const console = new Console();
-const o = new Clazz(7);
-o.method();
+const object = new Clazz(1);
+object.publicInstanceMethod();
+object.privateAttributeX = 666;
+console.writeln(`object.privateAttributeX: ${object.privateAttributeX}`);
+object.publicInstanceMethod();
 
-function Clazz(property) {
-    let other = 0;
+function Clazz(privateAttributeX) {
+    let privateAttributeY = 0;
+    this.publicInstanceMethod = function () {
+            privateFunction();
+            console.writeln(`privateAttributeX: ${privateAttributeX} - privateAttributeY: ${privateAttributeY}`);
+        }
 
-    this.method = function () {
-        private();
-        console.writeln(`property: ${property} - other: ${other}`);
+    function privateFunction() {
+        privateAttributeX++;
+        privateAttributeY++;
     }
-
-    function private() {
-        property++;
-        other++;
-    }
-
 }
