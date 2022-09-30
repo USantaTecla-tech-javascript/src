@@ -145,15 +145,6 @@ createInterval.createRandom = function(amount) {
   }
 }
 
-// let x = createInterval.createRandom(2);
-// console.writeln(x[0]);
-// console.writeln(x[1]);
-// console.writeln(x[0].includes(1).toString());
-// console.writeln(x[0].includes(x[1]).toString());
-// // if (x[0].intersected(x[1])){
-//   console.writeln(x[0].intersection(x[1]).toString());
-// // }
-
 const intervals = createInterval.createRandom(3);
 const tests = [
   interval =>

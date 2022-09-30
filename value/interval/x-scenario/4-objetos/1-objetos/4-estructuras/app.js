@@ -1,84 +1,6 @@
 const { Console } = require("./console");
 
 const console = new Console();
-const intervals = randomIntervals(10);
-const tests = [
-  interval =>
-    `toString(${toString(interval)}) => ${toString(interval)}`,
-
-  (interval, index) => {
-    const value = index - intervals.length / 2;
-    return `shifted(${toString(interval)}, ${value}) => ${toString(shifted(interval, value))}`
-  },
-
-  interval =>
-    `symmetrical(${toString(interval)}) => ${toString(symmetrical(interval))}`,
-
-  (interval, index, intervals) => {
-    const next = (index + 1) % intervals.length;
-    return `adjust(${toString(interval)}, ${toString(intervals[next])}) => ${toString(adjust(interval, intervals[next]))}`;
-  },
-  
-  (interval, index) =>
-    `scale(${toString(interval)}, ${index}) => ${toString(scale(interval, index))}`,
-  (interval, index, intervals) => {
-    const value = index - intervals.length / 2;
-    return `includes(${toString(interval)}, ${value}) => ${includes(interval, value)}`;
-  },
-  (interval, index, intervals) => {
-    const next = (index + 1) % intervals.length;
-    return `includes(${toString(interval)}, ${toString(intervals[next])}) => ${includes(interval, intervals[next])}`;
-  },
-  (interval, index, intervals) => {
-    const next = (index + 1) % intervals.length;
-    return `intersected(${toString(interval)}, ${toString(intervals[next])}) => ${intersected(interval, intervals[next])}`;
-  },
-  (interval, index, intervals) => {
-    const next = (index + 1) % intervals.length;
-    const result = intersection(interval, intervals[next]);
-    return `intersection(${toString(interval)}, ${toString(intervals[next])}) => ${result !== null? toString(result) : ``}`;
-  },
-  (interval, index, intervals) => {
-    const next = (index + 1) % intervals.length;
-    const result = union(interval, intervals[next]);
-    return `union(${toString(interval)}, ${toString(intervals[next])}) => ${result !== null? toString(result) : ``}`;
-  },
-  (interval, index) => {
-    const amount = index + 1;
-    return `values(${toString(interval)}, ${amount}) => ${values(interval, amount).reduce((previous, current) => `${previous}${current} `, ``)}`
-  },
-  (interval, index) => {
-    const amount = index + 1;
-    return `split(${toString(interval)}, ${amount}) => ${split(interval, amount).reduce((previous, current) => `${previous}${toString(current)} `, ``)}`
-  }
-];
-let msg = ``;
-for(let i=0; i < tests.length; i++){
-  for(let j=0; j< intervals.length; j++){
-    msg += `${tests[i](intervals[j], j, intervals)}\n`;
-  }
-  msg += `\n`;
-}
-console.writeln(msg);
-
-function randomIntervals(amount) {
-  let intervals = [];
-  for (let i = 0; i < amount; i++) {
-    let min = randomValue();
-    let max = randomValue();
-    if (min > max) {
-      let temp = min;
-      min = max;
-      max = temp;
-    }
-    intervals[i] = getInterval(min, max);
-  }
-  return intervals;
-
-  function randomValue() {
-    return parseInt(Math.random() * 100) - 50;
-  }
-}
 
 function read() {
   let interval = {};
@@ -219,3 +141,83 @@ function equals(left, rigth) {
 function clone({ min, max }) {
   return getInterval(min, max);
 };
+
+function randomIntervals(amount) {
+  let intervals = [];
+  for (let i = 0; i < amount; i++) {
+    let min = randomValue();
+    let max = randomValue();
+    if (min > max) {
+      let temp = min;
+      min = max;
+      max = temp;
+    }
+    intervals[i] = getInterval(min, max);
+  }
+  return intervals;
+
+  function randomValue() {
+    return parseInt(Math.random() * 100) - 50;
+  }
+}
+
+const intervals = randomIntervals(10);
+const tests = [
+  interval =>
+    `toString(${toString(interval)}) => ${toString(interval)}`,
+
+  (interval, index) => {
+    const value = index - intervals.length / 2;
+    return `shifted(${toString(interval)}, ${value}) => ${toString(shifted(interval, value))}`
+  },
+
+  interval =>
+    `symmetrical(${toString(interval)}) => ${toString(symmetrical(interval))}`,
+
+  (interval, index, intervals) => {
+    const next = (index + 1) % intervals.length;
+    return `adjust(${toString(interval)}, ${toString(intervals[next])}) => ${toString(adjust(interval, intervals[next]))}`;
+  },
+  
+  (interval, index) =>
+    `scale(${toString(interval)}, ${index}) => ${toString(scale(interval, index))}`,
+  (interval, index, intervals) => {
+    const value = index - intervals.length / 2;
+    return `includes(${toString(interval)}, ${value}) => ${includes(interval, value)}`;
+  },
+  (interval, index, intervals) => {
+    const next = (index + 1) % intervals.length;
+    return `includes(${toString(interval)}, ${toString(intervals[next])}) => ${includes(interval, intervals[next])}`;
+  },
+  (interval, index, intervals) => {
+    const next = (index + 1) % intervals.length;
+    return `intersected(${toString(interval)}, ${toString(intervals[next])}) => ${intersected(interval, intervals[next])}`;
+  },
+  (interval, index, intervals) => {
+    const next = (index + 1) % intervals.length;
+    const result = intersection(interval, intervals[next]);
+    return `intersection(${toString(interval)}, ${toString(intervals[next])}) => ${result !== null? toString(result) : ``}`;
+  },
+  (interval, index, intervals) => {
+    const next = (index + 1) % intervals.length;
+    const result = union(interval, intervals[next]);
+    return `union(${toString(interval)}, ${toString(intervals[next])}) => ${result !== null? toString(result) : ``}`;
+  },
+  (interval, index) => {
+    const amount = index + 1;
+    return `values(${toString(interval)}, ${amount}) => ${values(interval, amount).reduce((previous, current) => `${previous}${current} `, ``)}`
+  },
+  (interval, index) => {
+    const amount = index + 1;
+    return `split(${toString(interval)}, ${amount}) => ${split(interval, amount).reduce((previous, current) => `${previous}${toString(current)} `, ``)}`
+  }
+];
+let msg = ``;
+for(let i=0; i < tests.length; i++){
+  for(let j=0; j< intervals.length; j++){
+    msg += `${tests[i](intervals[j], j, intervals)}\n`;
+  }
+  msg += `\n`;
+}
+console.writeln(msg);
+
