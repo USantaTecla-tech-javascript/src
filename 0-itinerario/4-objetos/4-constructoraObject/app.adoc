@@ -44,11 +44,11 @@ console.writeln(copy.toString()); // {
  // toString = function() {
  //   let string = `{\n`;
  //   for(let property in this){
- //     string += `${property} = ${this[property]}\n`;
- //   }
- //   return `${string}}\n`;
- // }
- // a = 1
- // b = -2
- // c = -3
- // }
+//     string += `${property} = ${this[property]}\n`;
+//   }
+//   return `${string}}\n`;
+// }
+// a = 1
+// b = -2
+// c = -3
+// }
