@@ -1,11 +1,6 @@
 const { Console } = require("./console");
 
 const console = new Console();
-const object = createObject(1);
-object.publicInstanceMethod();
-object.privateAttributeX = 666;
-console.writeln(`object.privateAttributeX: ${object.privateAttributeX}`);
-object.publicInstanceMethod();
 
 function createObject(parameter) {
     let that = {
@@ -24,4 +19,8 @@ function createObject(parameter) {
     }
 };
 
-
+const object = createObject(1);
+object.publicInstanceMethod();
+object.privateAttributeX = 666;
+console.writeln(`object.privateAttributeX: ${object.privateAttributeX}`);
+object.publicInstanceMethod();
