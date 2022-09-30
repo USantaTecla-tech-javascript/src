@@ -136,7 +136,9 @@ Interval.prototype.clone = function () {
   return new Interval(this.min, this.max);
 };
 
-function randomIntervals(amount) {
+Interval.MIN = -50;
+Interval.MAX = 50;
+Interval.createRandom = function(amount) {
   let intervals = [];
   for (let i = 0; i < amount; i++) {
     let min = randomValue();
@@ -151,11 +153,11 @@ function randomIntervals(amount) {
   return intervals;
 
   function randomValue() {
-    return parseInt(Math.random() * 100) - 50;
+    return parseInt(Math.random() * (Interval.MAX - Interval.MIN)) + Interval.MIN;
   }
 }
 
-const intervals = randomIntervals(10);
+const intervals = Interval.createRandom(3);
 const tests = [
   interval =>
     `${interval.toString()}.toString() => ${interval.toString()}`,
@@ -212,4 +214,3 @@ console.writeln(
             `${previous}${msg}\n`,
           ``)}\n`,
       ``));
-

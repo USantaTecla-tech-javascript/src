@@ -147,9 +147,30 @@ class Interval {
     return new Interval(this.min, this.max);
   }
 
+  static createRandom(amount) {
+    let intervals = [];
+    for (let i = 0; i < amount; i++) {
+      let min = randomValue();
+      let max = randomValue();
+      if (min > max) {
+        let temp = min;
+        min = max;
+        max = temp;
+      }
+      intervals[i] = new Interval(min, max);
+    }
+    return intervals;
+  
+    function randomValue() {
+      return parseInt(Math.random() * (Interval.MAX - Interval.MIN)) + Interval.MIN;
+    }
+  }
+  
 }
+Interval.MIN = -50;
+Interval.MAX = 50;
 
-const intervals = randomIntervals(10);
+const intervals = Interval.createRandom(3);
 const tests = [
   interval =>
     `${interval.toString()}.toString() => ${interval.toString()}`,
@@ -189,13 +210,11 @@ const tests = [
   },
   (interval, index) => {
     let amount = index + 1;
-    return `${interval.toString()}.values(${amount}) => ${
-        interval.values(amount).reduce((previous, current) => `${previous}${current} `, ``)}`
+    return `${interval.toString()}.values(${amount}) => ${interval.values(amount).reduce((previous, current) => `${previous}${current} `, ``)}`
   },
   (interval, index) => {
     let amount = index + 1;
-    return `${interval.toString()}.split(${amount}) => ${
-        interval.split(amount).reduce((previous, current) => `${previous}${current.toString()} `, ``)}`
+    return `${interval.toString()}.split(${amount}) => ${interval.split(amount).reduce((previous, current) => `${previous}${current.toString()} `, ``)}`
   }
 ];
 
@@ -209,24 +228,6 @@ console.writeln(
           ``)}\n`,
       ``));
 
-function randomIntervals(amount) {
-  let intervals = [];
-  for (let i = 0; i < amount; i++) {
-    let min = randomValue();
-    let max = randomValue();
-    if (min > max) {
-      let temp = min;
-      min = max;
-      max = temp;
-    }
-    intervals[i] = new Interval(min, max);
-  }
-  return intervals;
-
-  function randomValue() {
-    return parseInt(Math.random() * 100) - 50;
-  }
-}
 
 // extends, super
 // static

@@ -1,80 +1,6 @@
 const { Console } = require("./console");
 
 const console = new Console();
-const intervals = randomIntervals(10);
-const tests = [
-  interval =>
-    `${interval.toString()}.toString() => ${interval.toString()}`,
-  interval =>
-    `${interval.toString()}.length() => ${interval.length()}`,
-  (interval, index) => {
-    let value = index - intervals.length / 2;
-    return `${interval.toString()}.shifted(${value}) => ${interval.shifted(value)}`
-  },
-  interval =>
-    `${interval.toString()}.symmetrical() => ${interval.symmetrical()}`,
-  (interval, index, intervals) => {
-    let next = (index + 1) % intervals.length;
-    return `${interval.toString()}.adjust(${intervals[next].toString()}) => ${interval.adjust(intervals[next])}`;
-  },
-  (interval, index) =>
-    `${interval.toString()}.scale(${index}) => ${interval.scale(index)}`,
-  (interval, index, intervals) => {
-    let value = index - intervals.length / 2;
-    return `${interval.toString()}.includes(${value}) => ${interval.includes(value)}`;
-  },
-  (interval, index, intervals) => {
-    let next = (index + 1) % intervals.length;
-    return `${interval.toString()}.includes(${intervals[next].toString()}) => ${interval.includes(intervals[next])}`;
-  },
-  (interval, index, intervals) => {
-    let next = (index + 1) % intervals.length;
-    return `${interval.toString()}.intersected(${intervals[next].toString()}) => ${interval.intersected(intervals[next])}`;
-  },
-  (interval, index, intervals) => {
-    let next = (index + 1) % intervals.length;
-    return `${interval.toString()}.intersection(${intervals[next].toString()}) => ${interval.intersection(intervals[next])}`;
-  },
-  (interval, index, intervals) => {
-    let next = (index + 1) % intervals.length;
-    return `${interval.toString()}.union(${intervals[next].toString()}) => ${interval.union(intervals[next])}`;
-  },
-  (interval, index) => {
-    let amount = index + 1;
-    return `${interval.toString()}.values(${amount}) => ${interval.values(amount).reduce((previous, current) => `${previous}${current} `, ``)}`
-  },
-  (interval, index) => {
-    let amount = index + 1;
-    return `${interval.toString()}.split(${amount}) => ${interval.split(amount).reduce((previous, current) => `${previous}${current.toString()} `, ``)}`
-  }
-];
-let msg = ``;
-for (let i = 0; i < tests.length; i++) {
-  for (let j = 0; j < intervals.length; j++) {
-    msg += `${tests[i](intervals[j], j, intervals)}\n`;
-  }
-  msg += `\n`;
-}
-console.writeln(msg);
-
-function randomIntervals(amount) {
-  let intervals = [];
-  for (let i = 0; i < amount; i++) {
-    let min = randomValue();
-    let max = randomValue();
-    if (min > max) {
-      let temp = min;
-      min = max;
-      max = temp;
-    }
-    intervals[i] = createInterval(min, max);
-  }
-  return intervals;
-
-  function randomValue() {
-    return parseInt(Math.random() * 100) - 50;
-  }
-}
 
 function createInterval(min, max) {
   return {
@@ -83,7 +9,7 @@ function createInterval(min, max) {
     read: function () {
       let error;
       do {
-        this.min =  console.readNumber(`Introduzca el mínimo: `);
+        this.min = console.readNumber(`Introduzca el mínimo: `);
         this.max = console.readNumber(`Introduzca el máximo: `);
         error = min > max;
         if (error) {
@@ -194,3 +120,82 @@ function createInterval(min, max) {
     }
   };
 }
+
+createInterval.MIN = -50;
+createInterval.MAX = 50;
+createInterval.createRandom = function (amount) {
+  let intervals = [];
+  for (let i = 0; i < amount; i++) {
+    let min = randomValue();
+    let max = randomValue();
+    if (min > max) {
+      let temp = min;
+      min = max;
+      max = temp;
+    }
+    intervals[i] = createInterval(min, max);
+  }
+  return intervals;
+
+  function randomValue() {
+    return parseInt(Math.random() * (createInterval.MAX - createInterval.MIN)) + createInterval.MIN;
+  }
+}
+
+const intervals = createInterval.createRandom(3);
+const tests = [
+  interval =>
+    `${interval.toString()}.toString() => ${interval.toString()}`,
+  interval =>
+    `${interval.toString()}.length() => ${interval.length()}`,
+  (interval, index) => {
+    let value = index - intervals.length / 2;
+    return `${interval.toString()}.shifted(${value}) => ${interval.shifted(value)}`
+  },
+  interval =>
+    `${interval.toString()}.symmetrical() => ${interval.symmetrical()}`,
+  (interval, index, intervals) => {
+    let next = (index + 1) % intervals.length;
+    return `${interval.toString()}.adjust(${intervals[next].toString()}) => ${interval.adjust(intervals[next])}`;
+  },
+  (interval, index) =>
+    `${interval.toString()}.scale(${index}) => ${interval.scale(index)}`,
+  (interval, index, intervals) => {
+    let value = index - intervals.length / 2;
+    return `${interval.toString()}.includes(${value}) => ${interval.includes(value)}`;
+  },
+  (interval, index, intervals) => {
+    let next = (index + 1) % intervals.length;
+    return `${interval.toString()}.includes(${intervals[next].toString()}) => ${interval.includes(intervals[next])}`;
+  },
+  (interval, index, intervals) => {
+    let next = (index + 1) % intervals.length;
+    return `${interval.toString()}.intersected(${intervals[next].toString()}) => ${interval.intersected(intervals[next])}`;
+  },
+  (interval, index, intervals) => {
+    let next = (index + 1) % intervals.length;
+    return `${interval.toString()}.intersection(${intervals[next].toString()}) => ${interval.intersection(intervals[next])}`;
+  },
+  (interval, index, intervals) => {
+    let next = (index + 1) % intervals.length;
+    return `${interval.toString()}.union(${intervals[next].toString()}) => ${interval.union(intervals[next])}`;
+  },
+  (interval, index) => {
+    let amount = index + 1;
+    return `${interval.toString()}.values(${amount}) => ${interval.values(amount).reduce((previous, current) => `${previous}${current} `, ``)}`
+  },
+  (interval, index) => {
+    let amount = index + 1;
+    return `${interval.toString()}.split(${amount}) => ${interval.split(amount).reduce((previous, current) => `${previous}${current.toString()} `, ``)}`
+  }
+];
+
+console.writeln(
+  tests.map(
+    test => intervals.map(test)).reduce(
+      (previous, block) =>
+        `${previous}${block.reduce(
+          (previous, msg) =>
+            `${previous}${msg}\n`,
+          ``)}\n`,
+      ``));
