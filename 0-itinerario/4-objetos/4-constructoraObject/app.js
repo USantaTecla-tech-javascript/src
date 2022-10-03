@@ -1,23 +1,20 @@
 const { Console } = require("./console");
 
 const console = new Console();
-const object = { a: 1, b: 2 };
-for(let property in object){
+let object = { a: 1, b: 2 };
+for (let property in object) {
   console.writeln(object[property]); // 1 / 2
 }
+console.writeln(Object.values(object)); // 1, 2
 console.writeln(Object.getOwnPropertyNames(object)); // a,b
 
 Object.assign(object, { b: -2, c: -3 });
-for(let property in object){
-  console.writeln(object[property]); // 1 / -2 / -3 
-}
+console.writeln(Object.values(object)); // 1, -2, 3
 console.writeln(Object.getOwnPropertyNames(object)); // a,b,c
 
 let copy = {};
 Object.assign(copy, object);
-for(let property in copy){
-  console.writeln(copy[property]); // 1 / -2 / -3 
-}
+console.writeln(Object.values(copy)); // 1, -2, 3
 console.writeln(Object.getOwnPropertyNames(copy)); // a,b,c
 
 Object.defineProperty(copy, 'd', {
@@ -26,29 +23,46 @@ Object.defineProperty(copy, 'd', {
   writable: true,
   value: 'valor'
 });
-for(let property in copy){
-  console.writeln(copy[property]); // 1 / -2 / -3 / valor 
-}
+
+console.writeln(Object.values(copy)); // 1, -2, 3
 console.writeln(Object.getOwnPropertyNames(copy)); // a,b,c,d
 
 console.writeln(copy.toString()); // [object Object]
-copy.toString = function() {
+copy.toString = function () {
   let string = `{\n`;
-  for(let property in this){
+  for (let property in this) {
     string += `${property} = ${this[property]}\n`;
   }
   return `${string}}\n`;
 }
 console.writeln(copy.toString()); // {
- // d = valor
- // toString = function() {
- //   let string = `{\n`;
- //   for(let property in this){
- //     string += `${property} = ${this[property]}\n`;
- //   }
- //   return `${string}}\n`;
- // }
- // a = 1
- // b = -2
- // c = -3
- // }
+// d = valor
+// toString = function() {
+//   let string = `{\n`;
+//   for(let property in this){
+//     string += `${property} = ${this[property]}\n`;
+//   }
+//   return `${string}}\n`;
+// }
+// a = 1
+// b = -2
+// c = -3
+// }
+
+function createObject(value) {
+  this.attribute = value;
+}
+createObject.prototype.write = function () {
+  console.writeln(`this.attribute: ${this.attribute}.`);
+}
+
+object = new createObject(true);
+object.write();
+console.writeln(Object.values(object));
+console.writeln(Object.getOwnPropertyNames(object));
+
+copy = Object.create(object);
+copy.attribute = false; 
+copy.write();
+console.writeln(Object.values(copy));
+console.writeln(Object.getOwnPropertyNames(copy));
