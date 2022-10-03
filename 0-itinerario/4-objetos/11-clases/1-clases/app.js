@@ -4,39 +4,37 @@ const console = new Console();
 
 class Clazz {
 
-    #publicAttributeX;
-    #publicAttributeY;
+    #privateAttributeX;
+    #privateAttributeY;
+    static #privateClazzAttribute = "global";
 
     constructor(property) {
-        this.#publicAttributeX = property;
-        this.#publicAttributeY = 0;
+        this.#privateAttributeX = property;
+        this.#privateAttributeY = 0;
     }
 
-    #privateMethod() {
-        this.#publicAttributeX++;
-        this.#publicAttributeY++;
+    #privateInstanceMethod() {
+        this.#privateAttributeX++;
+        this.#privateAttributeY++;
     }
 
     publicInstanceMethod() {
-        this.#privateMethod();
-        console.writeln(`publicAttributeX: ${this.#publicAttributeX} - publicAttributeY: ${this.#publicAttributeY}`);
-        console.writeln(`publicClazzAttribute: ${Clazz.#publicClazzAttribute}`);
+        this.#privateInstanceMethod();
+        console.writeln(`privateAttributeX: ${this.#privateAttributeX} - privateAttributeY: ${this.#privateAttributeY}`);
+        console.writeln(`privateClazzAttribute: ${Clazz.#privateClazzAttribute}`);
     }
 
-    static #publicClazzAttribute = "global";
-
     static publicClazzMethod(value){
-        Clazz.#publicClazzAttribute = value;
+        Clazz.#privateClazzAttribute = value;
     }
 };
 
 const object = new Clazz(1);
-object.publicInstanceMethod();
-object.publicAttributeX = 666;
-console.writeln(`object.publicAttributeX: ${object.publicAttributeX}`);
-console.writeln(`Clazz.publicClazzAttribute: ${Clazz.publicClazzAttribute}`);
-object.publicInstanceMethod();
+object.publicInstanceMethod(); // privateAttributeX: 2 - privateAttributeY: 1 / privateClazzAttribute: global
+// object.#privateAttributeX = 666; // ERROR
+// console.writeln(`object.#privateAttributeX: ${object.#privateAttributeX}`); // ERROR
+// console.writeln(`Clazz.#privateClazzAttribute: ${Clazz.#privateClazzAttribute}`); // ERROR
 Clazz.publicClazzMethod("nuevo");
-object.publicInstanceMethod();
+object.publicInstanceMethod(); // privateAttributeX: 3 - privateAttributeY: 2 / privateClazzAttribute: nuevo
 
 
