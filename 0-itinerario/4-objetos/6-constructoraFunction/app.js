@@ -22,7 +22,6 @@ superior(() => object.write(), 1000); // Antes [ attribute: Value ] Despues
 let funcUser = object.write.bind(object);
 superior(funcUser, 1000); // Antes [ attribute: Value ] Despues
  
-
 let numbers = [5, 6, 2, 3, 7];
 let max = Math.max(...numbers);
 let min = Math.min(...numbers);
