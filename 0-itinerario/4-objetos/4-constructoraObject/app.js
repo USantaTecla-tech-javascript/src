@@ -36,18 +36,18 @@ copy.toString = function () {
   return `${string}}\n`;
 }
 console.writeln(copy.toString()); // {
-// d = valor
-// toString = function() {
-//   let string = `{\n`;
-//   for(let property in this){
-//     string += `${property} = ${this[property]}\n`;
-//   }
-//   return `${string}}\n`;
-// }
-// a = 1
-// b = -2
-// c = -3
-// }
+ // d = valor
+ // toString = function() {
+ //   let string = `{\n`;
+ //   for(let property in this){
+ //     string += `${property} = ${this[property]}\n`;
+ //   }
+ //   return `${string}}\n`;
+ // }
+ // a = 1
+ // b = -2
+ // c = -3
+ // }
 
 function createObject(value) {
   this.attribute = value;
