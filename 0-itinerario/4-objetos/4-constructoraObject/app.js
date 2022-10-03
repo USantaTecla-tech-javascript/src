@@ -57,12 +57,12 @@ createObject.prototype.write = function () {
 }
 
 object = new createObject(true);
-object.write();
-console.writeln(Object.values(object));
-console.writeln(Object.getOwnPropertyNames(object));
+object.write(); // this.attribute: true.
+console.writeln(Object.values(object)); // true
+console.writeln(Object.getOwnPropertyNames(object)); // attribute
 
 copy = Object.create(object);
 copy.attribute = false; 
-copy.write();
-console.writeln(Object.values(copy));
-console.writeln(Object.getOwnPropertyNames(copy));
+copy.write(); // this.attribute: false.
+console.writeln(Object.values(copy)); // false
+console.writeln(Object.getOwnPropertyNames(copy)); // attribute
