@@ -1,3 +1,7 @@
+const { Console } = require("./console");
+
+const console = new Console();
+
 class Clazz{
 
   constructor(parameter){
@@ -5,11 +9,11 @@ class Clazz{
   }
   
   method() {
-      console.log(`this.attribute: ${this.attribute}`);
+      console.writeln(`this.attribute: ${this.attribute}`);
   }
 
 }
 
-new Clazz(`lo que sea`).method();
-let o = new Clazz("ñlkjasd");
-o.method();
+let object = new Clazz("nada");
+object.method(); // this.attribute: nada
+new Clazz(`lo que sea`).method(); // this.attribute: lo que sea

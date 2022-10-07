@@ -1,14 +1,20 @@
-function X() {
-  this.a = `lo que sea`;
-  this.set = function(o){
-    o.m = function(){
-      console.log(this.a);
+const { Console } = require("./console");
+
+const console = new Console();
+
+function Clazz() {
+  this.attribute = `lo que sea`;
+  this.set = function(object){
+    object.method = function(){
+      console.writeln(`this.attribute: ${this.attribute}`);
     }
   }
 }
 
-let o = {};
-let x = new X();
-x.set(o);
-o.m();
+let setterObject = new Clazz();
+let settedObject = {};
+setterObject.set(settedObject);
+settedObject.method(); // this.attribute: undefined
+settedObject.attribute = `nada`;
+settedObject.method(); // this.attribute: nada
 

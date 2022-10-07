@@ -1,5 +1,9 @@
+const { Console } = require("./console");
+
+const console = new Console();
+
 function zunction(){
-  console.log(`this.attribute: ${this.attribute}`);
+  console.writeln(`this.attribute: ${this.attribute}`);
 }
 
 let object1 = {
@@ -7,11 +11,13 @@ let object1 = {
 };
 
 let bindedZunction = zunction.bind(object1);
-bindedZunction();
+bindedZunction(); // this.attribute: lo que sea
+// object1.bindedZunction(); ERROR
 
 let object2 = {
-  attribute : 666
+  attribute : `nada`
 };
 
 bindedZunction = zunction.bind(object2);
-bindedZunction();
+bindedZunction(); // this.attribute: nada
+// object2.bindedZunction(); ERROR
