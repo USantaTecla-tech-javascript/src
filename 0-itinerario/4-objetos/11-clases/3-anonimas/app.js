@@ -4,19 +4,27 @@ const console = new Console();
 
 class Clazz {
 
+    constructor(string){
+        this.attribute = string;
+    }
     method() {
-        console.writeln(`metodo de Clazz`);
+        console.writeln(this.attribute);
     }
 }
 
-const object = new Clazz(1);
+let object = new Clazz(`Declaracion`);
 object.method();
 
 let clazz = class {
 
+    constructor(string){
+        this.attribute = string;
+    }
     method() {
-        console.writeln(`metodo de anónima`);
+        console.writeln(this.attribute);
     }
 }
 
-new clazz(1).method();
+object = new clazz(`Expresion`);
+object.method();
+new clazz(`Expresion`).method();
