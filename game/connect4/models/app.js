@@ -16,18 +16,6 @@ class ClosedInterval {
         return this.#min <= value && value <= this.#max;
     }
 
-    toString() {
-        return `[` + this.#min + `, ` + this.#max + `]`;
-    }
-
-    equals(closedInterval) {
-        if (this === closedInterval)
-            return true;
-        if (closedInterval === null)
-            return false;
-        return this.#min === closedInterval.#min && this.#max === closedInterval.#max
-    }
-
 }
 
 class Color {
@@ -42,19 +30,15 @@ class Color {
     }
 
     static get(ordinal) {
-        return Color.values()[ordinal];
+        return Color.#values()[ordinal];
     }
 
-    static values() {
+    static #values() {
         return [Color.RED, Color.YELLOW, Color.NULL];
     }
 
     write() {
         console.write(` ${this.#string[0]} `);
-    }
-
-    isNull() {
-        return this === Color.NULL;
     }
 
     toString() {
@@ -187,6 +171,36 @@ class Message {
 
 }
 
+class Line {
+
+    static LENGTH = 4;
+    #origin;
+    #coordinates;
+    #oppositeDirection;
+
+    constructor(coordinate) {
+        this.#origin = coordinate;
+    }
+
+    set(direction) {
+        this.#coordinates = [this.#origin];
+        for (let i = 1; i < Line.LENGTH; i++) {
+            this.#coordinates[i] = this.#coordinates[i - 1].shifted(direction.getCoordinate());
+        }
+        this.#oppositeDirection = direction.getOpposite();
+    }
+
+    shift() {
+        for (let i = 0; i < Line.LENGTH; i++) {
+            this.#coordinates[i] = this.#coordinates[i].shifted(this.#oppositeDirection.getCoordinate());
+        }
+    }
+
+    getCoordinates() {
+        return this.#coordinates;
+    }
+}
+
 class Board {
 
     #colors;
@@ -236,51 +250,30 @@ class Board {
         if (this.#lastDrop === undefined) {
             return false;
         }
+        let line = new Line(this.#lastDrop);
         for (let direction of [Direction.NORTH, Direction.NORTH_EAST, Direction.EAST, Direction.SOUTH_EAST]) {
-            let coordinates = this.getCoordinates(direction);
-            if (this.isConnect4(coordinates)) {
-                return true;
-            }
-            for (let i = 0; i < 4 - 1; i++) {
-                coordinates = this.getShifted(coordinates, direction.getOpposite());
-                if (this.isConnect4(coordinates)) {
+            line.set(direction);
+            for (let i = 0; i < Line.LENGTH; i++) {
+                if (this.isConnect4(line)) {
                     return true;
                 }
+                line.shift();
             }
         }
         return false;
     }
 
-    getCoordinates(direction) {
-        let coordinates = [];
-        coordinates[0] = this.#lastDrop;
-        for (let i = 1; i < 4; i++) {
-            coordinates[i] = coordinates[i - 1].shifted(direction.getCoordinate());
-        }
-        return coordinates;
-    }
-
-    isConnect4(coordinates) {
-        if (!coordinates[0].isValid()) {
-            return false;
-        }
-        for (let i = 1; i < coordinates.length; i++) {
+    isConnect4(line) {
+        let coordinates = line.getCoordinates();
+        for (let i = 0; i < Line.LENGTH; i++) {
             if (!coordinates[i].isValid()) {
                 return false;
             }
-            if (this.getColor(coordinates[i - 1]) != this.getColor(coordinates[i])) {
+            if (i > 0 && this.getColor(coordinates[i - 1]) != this.getColor(coordinates[i])) {
                 return false;
             }
         }
         return true;
-    }
-
-    getShifted(coordinates, direction) {
-        let shiftedCoordinates = [];
-        for (let i = 0; i < coordinates.length; i++) {
-            shiftedCoordinates[i] = coordinates[i].shifted(direction.getCoordinate());
-        }
-        return shiftedCoordinates;
     }
 
     writeln() {
@@ -348,15 +341,10 @@ class Player {
     }
 
     writeWinner() {
-        if (!this.#board.isWinner()) {
-            Message.PLAYERS_TIED.writeln();
-        } else {
-            let message = Message.PLAYER_WIN.toString();
-            message = message.replace(`#color`, this.#color.toString());
-            console.writeln(message);
-        }
+        let message = Message.PLAYER_WIN.toString();
+        message = message.replace(`#color`, this.#color.toString());
+        console.writeln(message);
     }
-
 }
 
 class Turn {
@@ -386,10 +374,13 @@ class Turn {
         }
     }
 
-    writeWinner() {
-        this.#players[this.#activePlayer].writeWinner();
+    writeResult() {
+        if (this.#board.isWinner()) {
+            this.#players[this.#activePlayer].writeWinner();
+        } else {
+            Message.PLAYERS_TIED.writeln();
+        }
     }
-
 }
 
 class YesNoDialog {
@@ -450,7 +441,7 @@ class Connect4 {
             this.#turn.play();
             this.#board.writeln();
         } while (!this.#board.isFinished());
-        this.#turn.writeWinner();
+        this.#turn.writeResult();
     }
 
     isResumed() {
@@ -466,8 +457,3 @@ class Connect4 {
 }
 
 new Connect4().playGames();
-
-
-
-
-
