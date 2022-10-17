@@ -22,15 +22,17 @@ let Base = function (parameter) {
 }
 
 let Derived = function (parameter, other) {
+    let base = Base(parameter);
     let that = {        
             other: other
         };
 
     return Object.assign({},
-        Base(parameter), 
+        base, 
         {
         methodB() {
             console.writeln(`Derived - B: attribute: ${that.other}`);
+            base.methodB.call(this);
         },
         methodC() {
             console.writeln(`Derived - C: attribute: ${that.other}`);
