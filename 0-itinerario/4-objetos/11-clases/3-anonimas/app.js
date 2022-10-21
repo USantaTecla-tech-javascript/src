@@ -25,6 +25,11 @@ let clazz = class {
     }
 }
 
+console.writeln(typeof clazz);
 object = new clazz(`Expresion`);
 object.method();
 new clazz(`Expresion`).method();
+clazz = Clazz;
+object = new clazz(`Flipping on the beach`);
+object.method();
+new clazz(`Flipping on fly`).method();

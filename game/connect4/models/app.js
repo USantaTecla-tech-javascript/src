@@ -137,6 +137,10 @@ class Direction {
         return this.#coordinate;
     }
 
+    static halfValues(){
+        return Direction.values().splice(0,Direction.values().length / 2);
+    }
+
 }
 
 class Message {
@@ -251,7 +255,7 @@ class Board {
             return false;
         }
         let line = new Line(this.#lastDrop);
-        for (let direction of Direction.values().splice(0, 3)) {
+        for (let direction of Direction.halfValues()) {
             line.set(direction);
             for (let i = 0; i < Line.LENGTH; i++) {
                 if (this.isConnect4(line)) {

@@ -4,7 +4,7 @@ const console = new Console();
 
 class Base {
 
-    #attribute
+    #attribute;
 
     constructor(parameter) {
         this.#attribute = parameter;

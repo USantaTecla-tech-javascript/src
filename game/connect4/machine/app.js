@@ -365,8 +365,9 @@ class RandomPlayer extends Player {
     getColumn() {
         let column;
         do {
-            column = Math.random() * Coordinate.NUMBER_COLUMNS;
-        } while (!this.isComplete(column));
+            column = Math.floor(Math.random() * Coordinate.NUMBER_COLUMNS);
+            console.writeln(column);
+        } while (this.isComplete(column));
         console.writeln(`Aleatoriamente en la columna: ${column}`);
         return column;
     }

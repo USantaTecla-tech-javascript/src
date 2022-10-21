@@ -1,0 +1,175 @@
+@startuml
+
+class Console
+
+abstract class Option #crimson {
+    #title
+    constructor(title)
+    {abstract} interact() 
+    showTitle(index)
+    getTitle() 
+}
+class QuitOption #crimson {
+    #executed
+    constructor()
+    interact() 
+    isExecuted()
+}
+
+Option *-down-> Console : {static} console
+
+Option <|-down- QuitOption
+
+abstract class Menu #crimson {
+    #title
+    #options
+    constructor(title)
+    interact()
+    {abstract} addOptions()
+    interact_()
+    showTitles()
+    execChoosedOption()
+    add(option)
+    removeOptions()
+    hasOption(option)
+}
+abstract class QuitMenu #crimson {
+    #quitOption;
+    constructor(title)
+    showTitles()
+    addquitOption()
+    isExecutedquitOption()
+}
+abstract class IterativeMenu #crimson {
+    constructor(title) 
+    interact()
+}
+abstract class DynamicMenu #crimson {
+    constructor(title) 
+    interact()
+}
+
+Menu *-down-> "+" Option
+QuitMenu *-down-> QuitOption
+
+Menu <|-down- QuitMenu
+QuitMenu <|-down- IterativeMenu
+IterativeMenu <|-down- DynamicMenu
+
+class Model #darkCyan {
+    #strings
+    constructor()
+    add(string)
+    remove(index)
+    get(index) 
+    size() 
+}
+
+class ModelOption #forestGreen {
+    model
+    constructor(string, model)
+    {abstract} interact()
+}
+
+ModelOption -down-> Model
+Option <|-down- ModelOption
+
+class ListModelOption #forestGreen {
+    constructor (model)
+    interact() 
+}
+
+ModelOption <|-down- ListModelOption
+
+class AddModelOption #forestGreen {
+    constructor(model)
+    interact()
+}
+
+ModelOption <|-down- AddModelOption
+
+class RemoveModelsOption  #forestGreen{
+    constructor(model)
+    interact()
+}
+
+ModelOption <|-down- RemoveModelsOption
+
+class RemoveModelOption #forestGreen {
+    #index
+    constructor(model, index) 
+    getTitle() 
+    interact()
+}
+
+ModelOption <|-down- RemoveModelOption
+
+class X as "..."  #forestGreen {
+    constructor(model)
+    interact()
+}
+
+ModelOption <|-down- X
+
+class ModelMenu  #Lime {
+    #model
+    constructor(model)
+    addOptions()
+}
+
+Menu <|-down- ModelMenu
+
+ModelMenu -down-> Model
+
+ModelMenu *-down-> AddModelOption
+
+class ModelQuitMenu  #Lime {
+    #model
+    constructor(model)
+    addOptions()
+}
+
+QuitMenu <|-down- ModelQuitMenu
+
+ModelQuitMenu -down-> Model
+
+ModelQuitMenu *-down-> ListModelOption
+
+class ModelIterativeMenu  #Lime{
+    #model
+    constructor(model)
+    addOptions()
+}
+
+IterativeMenu <|-down- ModelIterativeMenu
+
+ModelIterativeMenu -down-> Model
+
+ModelIterativeMenu *-down-> X
+
+class ModelDynamicMenu  #Lime {
+    #model
+    constructor(model)
+    addOptions()
+}
+
+DynamicMenu <|-down- ModelDynamicMenu
+
+ModelDynamicMenu -down-> Model
+
+RemoveModelsOption *-down-> ModelDynamicMenu
+ModelDynamicMenu *-down-> RemoveModelOption
+
+IterativeMenu <|-down- ModelIterativeDynamicMenu
+
+ModelIterativeDynamicMenu -down-> Model
+
+ModelIterativeDynamicMenu *-down-> RemoveModelsOption
+
+class ModelIterativeDynamicMenu  #Lime {
+    #model
+    constructor(model)
+    addOptions()
+}
+
+@enduml
