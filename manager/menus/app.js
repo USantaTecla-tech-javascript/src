@@ -29,15 +29,15 @@ class QuitOption extends Option {
 
     constructor() {
         super("Salir");
-        this.executed = false;
+        this.#executed = false;
     }
 
     interact() {
-        this.executed = true;
+        this.#executed = true;
     }
 
     isExecuted() {
-        return this.executed;
+        return this.#executed;
     }
 
 }
@@ -123,14 +123,10 @@ class QuitMenu extends Menu {
     }
 
     showTitles() {
-        this.addquitOption();
-        super.showTitles();
-    }
-
-    addquitOption() {
         if (!this.hasOption(this.#quitOption)) {
             this.add(this.#quitOption);
         }
+        super.showTitles();
     }
 
     isExecutedquitOption() {
@@ -335,12 +331,12 @@ class ModelQuitMenu extends QuitMenu {
 
     constructor(model) {
         super("Model Quit Menu");
-        this.model = model;
+        this.#model = model;
     }
 
     addOptions() {
-        this.add(new ListModelOption(this.model));
-        this.add(new InverseListModelOption(this.model));
+        this.add(new ListModelOption(this.#model));
+        this.add(new InverseListModelOption(this.#model));
     }
 
 }
@@ -374,8 +370,6 @@ class ModelDynamicMenu extends DynamicMenu {
     constructor(model) {
         super("Model Dynamic Menu");
         this.model = model;
-        this.addOptions();
-
     }
 
     addOptions() {

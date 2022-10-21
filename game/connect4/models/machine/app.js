@@ -356,6 +356,7 @@ class UserPlayer extends Player {
                 }
             }
         } while (!valid);
+        return column;
     }
 
 }
@@ -366,7 +367,6 @@ class RandomPlayer extends Player {
         let column;
         do {
             column = Math.floor(Math.random() * Coordinate.NUMBER_COLUMNS);
-            console.writeln(column);
         } while (this.isComplete(column));
         console.writeln(`Aleatoriamente en la columna: ${column}`);
         return column;
