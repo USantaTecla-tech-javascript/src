@@ -254,27 +254,108 @@ class Board {
 
 }
 
+class Player {
+    
+    #color;
+    #board;
+
+    constructor(color, board) {
+        this.#color = color;
+        this.#board = board;        
+    }
+
+    getColor(){
+        return this.#color;
+    }
+
+    isComplete(column){
+        return this.#board.isComplete(column);
+    }
+
+    dropToken(column){
+        this.#board.dropToken(column, this.#color);
+    }
+
+    accept(visitor){}
+}
+
+class UserPlayer extends Player {
+    
+    constructor(color, board) {
+        super(color, board);
+    }
+
+    accept(visitor){
+        visitor.visitUserPlayer(this);
+    }
+
+}
+
+class MachinePlayer extends Player {
+
+    constructor(color, board) {
+        super(color, board);
+    }
+
+    accept(visitor){}
+    getColumn(){}
+
+}
+
+
+class RandomMachinePlayer extends MachinePlayer {
+
+    constructor(color, board) {
+        super(color, board);
+    }
+
+    accept(visitor){
+        visitor.visitMachinePlayer(this);
+    }
+
+    getColumn(){
+        let column;
+        do {
+            column = Math.floor(Math.random() * Coordinate.NUMBER_COLUMNS);
+        } while (this.isComplete(column));
+        return column;
+    }
+
+}
+
 class Turn {
 
     static #NUMBER_PLAYERS = 2;
-    #activeColor;
+    #players;
+    #activePlayer;
+    #board;
 
-    constructor() {
+    constructor(board) {
+        this.#board = board;
+        this.#players = [];
         this.reset();
     }
 
-    reset() {
-        this.#activeColor = 0;
+    reset(userPlayers) {
+        for (let i = 0; i < Turn.#NUMBER_PLAYERS; i++) {
+            this.#players[i] = i < userPlayers ? 
+                new UserPlayer(Color.get(i), this.#board) : 
+                new RandomMachinePlayer(Color.get(i), this.#board);
+        }
+        this.#activePlayer = 0;
+
     }
 
     next() {
-        this.#activeColor = (this.#activeColor + 1) % Turn.#NUMBER_PLAYERS;
+        if (!this.#board.isFinished()) {
+            this.#activePlayer = (this.#activePlayer + 1) % Turn.#NUMBER_PLAYERS;
+        }
     }
 
-    getActiveColor() {
-        return Color.values()[this.#activeColor];
+    getActivePlayer(){
+        return this.#players[this.#activePlayer];
     }
-
+    
 }
 
 class Game {
@@ -284,19 +365,16 @@ class Game {
 
     constructor() {
         this.#board = new Board();
-        this.#turn = new Turn();
+        this.#turn = new Turn(this.#board);
     }
 
-    reset() {
+    reset(userPlayers) {
         this.#board.reset();
-        this.#turn.reset();
+        this.#turn.reset(userPlayers);
     }
 
-    dropToken(column) {
-        this.#board.dropToken(column, this.#turn.getActiveColor());
-        if (!this.#board.isFinished()) {
-            this.#turn.next();
-        }
+    getColor(coordinate){
+        return this.#board.getColor(coordinate);
     }
 
     isComplete() {
@@ -311,18 +389,23 @@ class Game {
         return this.#board.isFinished();
     }
 
-    getActiveColor() {
-        return this.#turn.getActiveColor();
+    getActivePlayer(){
+        return this.#turn.getActivePlayer();
     }
 
-    getColor(coordinate) {
-        return this.#board.getColor(coordinate);
+    getActiveColor(){
+        return this.getActivePlayer().getColor();
+    }
+
+    next(){
+        this.#turn.next();
     }
 
 }
 
 class Message {
     static TITLE = new Message(`--- CONNECT 4 ---`);
+    static NUM_PLAYERS = new Message(`Enter number of users: `);
     static HORIZONTAL_LINE = new Message(`-`);
     static VERTICAL_LINE = new Message(`|`);
     static TURN = new Message(`Turn: `);
@@ -383,6 +466,69 @@ class BoardView {
 
 }
 
+class PlayerView {
+    
+    player;
+
+    constructor(player) {
+        this.player = player;
+    }
+
+    interact() {
+        this.player.dropToken(this.getColumn());
+    }
+
+    getColumn() {}
+
+    getActivePlayer() {
+        return this.player;
+    }
+
+    
+}
+
+class UserPlayerView extends PlayerView {
+    
+    constructor(player) {
+        super(player);
+    }
+
+    getColumn() {
+        let column;
+        let valid;
+        do {
+            Message.TURN.write();
+            console.writeln(this.player.getColor().toString());
+            column = console.readNumber(Message.ENTER_COLUMN_TO_DROP.toString()) - 1;
+            valid = Coordinate.isColumnValid(column);
+            if (!valid) {
+                Message.INVALID_COLUMN.writeln();
+            } else {
+                valid = !this.player.isComplete(column);
+                if (!valid) {
+                    Message.COMPLETED_COLUMN.writeln();
+                }
+            }
+        } while (!valid);
+        return column;
+    }
+     
+}
+
+class MachinePlayerView extends PlayerView {
+
+    constructor(player) {
+        super(player);
+    }
+
+    getColumn() {
+        let column = this.player.getColumn();
+        console.writeln(`Columna escogida aleatoriamente: ` + column);
+        return column;
+    }
+
+}
+
 class TurnView {
 
     #game;
@@ -391,24 +537,22 @@ class TurnView {
         this.#game = game;
     }
 
-    play() {
-        let column;
-        let valid;
-        do {
-            Message.TURN.write();
-            console.writeln(this.#game.getActiveColor().toString());
-            column = console.readNumber(Message.ENTER_COLUMN_TO_DROP.toString()) - 1;
-            valid = Coordinate.isColumnValid(column);
-            if (!valid) {
-                Message.INVALID_COLUMN.writeln();
-            } else {
-                valid = !this.#game.isComplete(column);
-                if (!valid) {
-                    Message.COMPLETED_COLUMN.writeln();
-                }
-            }
-        } while (!valid);
-        this.#game.dropToken(column);
+    readPlayers(){
+        let userPlayers = console.readNumber(Message.NUM_PLAYERS.toString());
+        this.#game.reset(userPlayers);
+    }
+
+    interact(){
+        this.#game.getActivePlayer().accept(this);
+        this.#game.next();
+    }
+
+    visitUserPlayer(userPlayer){
+        new UserPlayerView(userPlayer).interact();
+    }
+
+    visitMachinePlayer(machinePlayer){
+        new MachinePlayerView(machinePlayer).interact();
     }
 
     writeResult() {
@@ -442,10 +586,11 @@ class GameView {
     }
 
     #playGame() {
+        this.#turnView.readPlayers();
         Message.TITLE.writeln();
         this.#boardView.writeln();
         do {
-            this.#turnView.play();
+            this.#turnView.interact();
             this.#boardView.writeln();
         } while (!this.#game.isFinished());
         this.#turnView.writeResult();
