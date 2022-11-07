@@ -68,10 +68,6 @@ class Coordinate {
         return this.#column === coordinate.#column && this.#row === coordinate.#row;
     }
 
-    toString() {
-        return `Coordinate [row= ${this.#row} column= ${this.#column}]`;
-    }
-
 }
 
 class Direction {
@@ -302,7 +298,6 @@ class MachinePlayer extends Player {
 
 }
 
-
 class RandomMachinePlayer extends MachinePlayer {
 
     constructor(color, board) {
@@ -468,20 +463,20 @@ class BoardView {
 
 class PlayerView {
     
-    player;
+    #player;
 
     constructor(player) {
-        this.player = player;
+        this.#player = player;
     }
 
-    interact() {
-        this.player.dropToken(this.getColumn());
+    dropToken() {
+        this.#player.dropToken(this.getColumn());
     }
 
     getColumn() {}
 
     getActivePlayer() {
-        return this.player;
+        return this.#player;
     }
 
     
@@ -498,13 +493,13 @@ class UserPlayerView extends PlayerView {
         let valid;
         do {
             Message.TURN.write();
-            console.writeln(this.player.getColor().toString());
+            console.writeln(this.getActivePlayer().getColor().toString());
             column = console.readNumber(Message.ENTER_COLUMN_TO_DROP.toString()) - 1;
             valid = Coordinate.isColumnValid(column);
             if (!valid) {
                 Message.INVALID_COLUMN.writeln();
             } else {
-                valid = !this.player.isComplete(column);
+                valid = !this.getActivePlayer().isComplete(column);
                 if (!valid) {
                     Message.COMPLETED_COLUMN.writeln();
                 }
@@ -522,7 +517,7 @@ class MachinePlayerView extends PlayerView {
     }
 
     getColumn() {
-        let column = this.player.getColumn();
+        let column = this.getActivePlayer().getColumn();
         console.writeln(`Columna escogida aleatoriamente: ` + column);
         return column;
     }
@@ -537,22 +532,22 @@ class TurnView {
         this.#game = game;
     }
 
-    readPlayers(){
+    resetPlayers(){
         let userPlayers = console.readNumber(Message.NUM_PLAYERS.toString());
         this.#game.reset(userPlayers);
     }
 
-    interact(){
+    dropToken(){
         this.#game.getActivePlayer().accept(this);
         this.#game.next();
     }
 
     visitUserPlayer(userPlayer){
-        new UserPlayerView(userPlayer).interact();
+        new UserPlayerView(userPlayer).dropToken();
     }
 
     visitMachinePlayer(machinePlayer){
-        new MachinePlayerView(machinePlayer).interact();
+        new MachinePlayerView(machinePlayer).dropToken();
     }
 
     writeResult() {
@@ -586,11 +581,11 @@ class GameView {
     }
 
     #playGame() {
-        this.#turnView.readPlayers();
+        this.#turnView.resetPlayers();
         Message.TITLE.writeln();
         this.#boardView.writeln();
         do {
-            this.#turnView.interact();
+            this.#turnView.dropToken();
             this.#boardView.writeln();
         } while (!this.#game.isFinished());
         this.#turnView.writeResult();
