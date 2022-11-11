@@ -1,4 +1,10 @@
-class BoardView {
+import { Console } from 'console-mpds';
+import { Coordinate } from '../types/Coordinate.js';
+import { Message } from './Message.js';
+
+const console = new Console();
+
+export class BoardView {
 
     #game;
 
@@ -27,5 +33,3 @@ class BoardView {
     }
 
 }
-
-export default BoardView;

@@ -1,7 +1,8 @@
-import UserPlayer from './UserPlayer.js';
-import RandomMachinePlayer from './RandomMachinePlayer.js';
+import { Color } from '../types/Color.js';
+import { UserPlayer } from './UserPlayer.js';
+import { RandomMachinePlayer } from './RandomMachinePlayer.js';
 
-class Turn {
+export class Turn {
 
     static #NUMBER_PLAYERS = 2;
     #players;
@@ -35,5 +36,3 @@ class Turn {
     }
     
 }
-
-export default Turn;

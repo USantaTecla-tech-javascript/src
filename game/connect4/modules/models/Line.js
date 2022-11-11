@@ -1,4 +1,4 @@
-class Line {
+export class Line {
 
     static LENGTH = 4;
     #origin;
@@ -27,5 +27,3 @@ class Line {
         return this.#coordinates;
     }
 }
-
-export default Line;

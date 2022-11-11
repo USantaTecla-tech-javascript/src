@@ -1,4 +1,4 @@
-class Color {
+export class Color {
 
     static RED = new Color(`Red`);
     static YELLOW = new Color(`Yellow`);
@@ -22,5 +22,3 @@ class Color {
     }
 
 }
-
-export default Color;

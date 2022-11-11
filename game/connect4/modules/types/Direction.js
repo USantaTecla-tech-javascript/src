@@ -1,4 +1,6 @@
-class Direction {
+import { Coordinate } from "./Coordinate.js";
+
+export class Direction {
     static NORTH = new Direction(1, 0);
     static NORTH_EAST = new Direction(1, 1);
     static EAST = new Direction(0, 1);
@@ -33,5 +35,3 @@ class Direction {
     }
 
 }
-
-export default Direction;

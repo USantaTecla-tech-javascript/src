@@ -1,4 +1,11 @@
-class TurnView {
+import { Message } from "./Message.js";
+import { Console } from 'console-mpds';
+import { UserPlayerView } from './UserPlayerView.js';
+import { MachinePlayerView } from './MachinePlayerView.js';
+
+const console = new Console();
+
+export class TurnView {
 
     #game;
 
@@ -35,5 +42,3 @@ class TurnView {
     }
 
 }
-
-export default TurnView;

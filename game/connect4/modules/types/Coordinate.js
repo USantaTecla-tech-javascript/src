@@ -1,6 +1,6 @@
-import ClosedInterval from './ClosedInterval.js';
+import { ClosedInterval } from './ClosedInterval.js';
 
-class Coordinate {
+export class Coordinate {
 
     static ORIGIN = new Coordinate(0, 0);
     static NUMBER_ROWS = 6;
@@ -51,5 +51,3 @@ class Coordinate {
     }
 
 }
-
-export default Coordinate;

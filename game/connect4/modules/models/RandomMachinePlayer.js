@@ -1,4 +1,7 @@
-class RandomMachinePlayer extends MachinePlayer {
+import { MachinePlayer } from "./MachinePlayer.js";
+import { Coordinate } from "../types/Coordinate.js";
+
+export class RandomMachinePlayer extends MachinePlayer {
 
     constructor(color, board) {
         super(color, board);
@@ -17,5 +20,3 @@ class RandomMachinePlayer extends MachinePlayer {
     }
 
 }
-
-export default RandomMachinePlayer;

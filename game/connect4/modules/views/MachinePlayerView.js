@@ -1,4 +1,9 @@
-class MachinePlayerView extends PlayerView {
+import { Console } from 'console-mpds';
+import { PlayerView } from "./PlayerView.js";
+
+const console = new Console();
+
+export class MachinePlayerView extends PlayerView {
 
     constructor(player) {
         super(player);
@@ -11,5 +16,3 @@ class MachinePlayerView extends PlayerView {
     }
 
 }
-
-export default MachinePlayerView;

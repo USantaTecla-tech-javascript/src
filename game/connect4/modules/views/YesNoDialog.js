@@ -1,4 +1,8 @@
-class YesNoDialog {
+import { Console } from 'console-mpds';
+
+const console = new Console();
+
+export class YesNoDialog {
 
     static #AFFIRMATIVE = `y`;
     static #NEGATIVE = `n`;
@@ -32,6 +36,3 @@ class YesNoDialog {
         return this.#answer.toLowerCase()[0];
     }
 }
-
-
-export default YesNoDialog;

@@ -1,6 +1,6 @@
-import Player from './Player.js';
+import { Player } from './Player.js';
 
-class MachinePlayer extends Player {
+export class MachinePlayer extends Player {
 
     constructor(color, board) {
         super(color, board);
@@ -10,5 +10,3 @@ class MachinePlayer extends Player {
     getColumn(){}
 
 }
-
-export default MachinePlayer;

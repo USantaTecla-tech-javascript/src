@@ -1,6 +1,6 @@
-import Player from './Player.js';
+import { Player } from './Player.js';
 
-class UserPlayer extends Player {
+export class UserPlayer extends Player {
     
     constructor(color, board) {
         super(color, board);
@@ -11,5 +11,3 @@ class UserPlayer extends Player {
     }
 
 }
-
-export default UserPlayer;

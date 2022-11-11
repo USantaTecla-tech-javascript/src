@@ -1,7 +1,9 @@
-import Coordinate from '../types/Coordinate.js';
-import Color from '../types/Color.js';
+import { Coordinate } from '../types/Coordinate.js';
+import { Color } from '../types/Color.js';
+import { Line } from './Line.js';
+import { Direction } from '../types/Direction.js';
 
-class Board {
+export class Board {
 
     #colors;
     #lastDrop;
@@ -87,7 +89,4 @@ class Board {
     getColor(coordinate) {
         return this.#colors[coordinate.getRow()][coordinate.getColumn()];
     }
-
 }
-
-export default Board;

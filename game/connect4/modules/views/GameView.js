@@ -1,4 +1,9 @@
-class GameView {
+import { BoardView } from "./BoardView.js";
+import { TurnView } from "./TurnView.js";
+import { Message } from "./Message.js";
+import { YesNoDialog } from './YesNoDialog.js';
+
+export class GameView {
 
     #game;
     #boardView;
@@ -36,5 +41,3 @@ class GameView {
         return yesNoDialog.isAffirmative();
     }
 }
-
-export default GameView;

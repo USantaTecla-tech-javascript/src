@@ -1,5 +1,5 @@
-import Game from './models/Game.js';
-import GameView from './views/GameView.js';
+import { Game } from './models/Game.js';
+import { GameView } from './views/GameView.js';
 
 class Connect4 {
 

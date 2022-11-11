@@ -1,4 +1,4 @@
-class PlayerView {
+export class PlayerView {
     
     #player;
 
@@ -18,5 +18,3 @@ class PlayerView {
 
     
 }
-
-export default PlayerView;

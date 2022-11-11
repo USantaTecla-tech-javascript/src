@@ -1,7 +1,7 @@
-import Board from './Board.js';
-import Turn from './Turn.js';
+import { Board } from './Board.js';
+import { Turn } from './Turn.js';
 
-class Game {
+export class Game {
 
     #board;
     #turn;
@@ -45,5 +45,3 @@ class Game {
     }
 
 }
-
-export default Game;

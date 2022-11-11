@@ -1,4 +1,4 @@
-class Player {
+export class Player {
     
     #color;
     #board;
@@ -22,5 +22,3 @@ class Player {
 
     accept(visitor){}
 }
-
-export default Player;

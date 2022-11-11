@@ -1,4 +1,8 @@
-class Message {
+import { Console } from 'console-mpds';
+
+const console = new Console();
+
+export class Message {
     static TITLE = new Message(`--- CONNECT 4 ---`);
     static NUM_PLAYERS = new Message(`Enter number of users: `);
     static HORIZONTAL_LINE = new Message(`-`);
@@ -30,5 +34,3 @@ class Message {
     }
 
 }
-
-export default Message;
