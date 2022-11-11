@@ -1,6 +1,4 @@
-import { Console } from 'console-mpds';
-
-const console = new Console();
+import { console } from '../utils/console.js';
 
 export class YesNoDialog {
 

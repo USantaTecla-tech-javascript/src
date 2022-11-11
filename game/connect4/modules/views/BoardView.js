@@ -1,8 +1,6 @@
-import { Console } from 'console-mpds';
+import { console } from '../utils/console.js';
 import { Coordinate } from '../types/Coordinate.js';
 import { Message } from './Message.js';
-
-const console = new Console();
 
 export class BoardView {
 

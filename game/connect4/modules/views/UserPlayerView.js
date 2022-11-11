@@ -1,9 +1,7 @@
-import { Console } from 'console-mpds';
+import { console } from '../utils/console.js';
 import { PlayerView } from './PlayerView.js';
 import { Message } from './Message.js';
 import { Coordinate } from '../types/Coordinate.js';
-
-const console = new Console();
 
 export class UserPlayerView extends PlayerView {
     

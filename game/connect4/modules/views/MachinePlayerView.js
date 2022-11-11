@@ -1,7 +1,5 @@
-import { Console } from 'console-mpds';
+import { console } from '../utils/console.js';
 import { PlayerView } from "./PlayerView.js";
-
-const console = new Console();
 
 export class MachinePlayerView extends PlayerView {
 
