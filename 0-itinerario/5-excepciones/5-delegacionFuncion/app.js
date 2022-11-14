@@ -1,5 +1,14 @@
-console.log(`Sentencia previa externa`);
-try {
+function outside() {
+    console.log(`Sentencia previa externa`);
+    try {
+        inside();
+    } catch (exception) {
+        console.log("Acciones catch externa: " + exception);
+    }
+    console.log(`Sentencia posterior externa`);
+}
+
+function inside() {
     console.log(`Sentencia previa interna`);
     try {
         if (Math.random() < 0.5) {
@@ -18,7 +27,8 @@ try {
         // gestion completa
     }
     console.log(`Sentencia posterior interna`);
-} catch (exception) {
-    console.log("Acciones catch externa: " + exception);
 }
-console.log(`Sentencia posterior externa`);
+
+outside();
+console.log("---");
+inside();

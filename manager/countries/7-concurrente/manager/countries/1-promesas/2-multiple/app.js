@@ -42,6 +42,7 @@ function getBordersInfo(code) {
 function getCountryInfo(code) {
   return new Promise((resolve, reject) => {
     const url = `https://restcountries.com/v3.1/alpha/${code}`;
+    console.log(url);
     https.get(url, (resp) => {
       let data = '';
 
