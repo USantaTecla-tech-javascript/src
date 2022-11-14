@@ -17,12 +17,13 @@ function inside() {
         console.log("Sentencia ejecutada? interna");
     } catch (exception) {
         console.log("Acciones catch interna: " + exception);
+        // no gestiona nada
         if (Math.random() < 0.5) {
-            throw `re-${exception}`; // no gestiona nada
+            throw exception;
         }
         // gestiona parcialmente
         if (Math.random() < 0.5) {
-            throw "Error parcial";
+            throw `re-${exception}`; 
         }
         // gestion completa
     }
@@ -31,4 +32,4 @@ function inside() {
 
 outside();
 console.log("---");
-inside();
+//inside();
