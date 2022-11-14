@@ -1,6 +1,7 @@
-import module from './module.js';
+import {K, o, f, c} from './module.js';
 
-console.log(module.K);
-console.log(module.o);
-module.f();
-let o = new module.c();
+console.log(K);
+console.log(o);
+f();
+let object = new c();
+//object.m();

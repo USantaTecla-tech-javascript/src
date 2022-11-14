@@ -12,6 +12,11 @@ class c {
   constructor() {
     console.log(`objeto de la clase c del module`);
   }
+
+  m(){
+    console.log(`método de la clase c del module`);
+  }
+
 };
 
 export default { K, o, f, c};

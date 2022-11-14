@@ -1,6 +1,9 @@
-import module from './module.js';
+import x from './module.js';
 
-console.log(module.K);
-console.log(module.o);
-module.f();
-let o = new module.c();
+console.log(x.K);
+console.log(x.o);
+x.f();
+let object = new x.c();
+
+
+
