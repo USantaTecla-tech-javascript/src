@@ -1,6 +1,6 @@
 const https = require('https');
 
-async function getCountryInfo(code) {
+function getCountryInfo(code) {
   return new Promise((resolve, reject) => {
     const url = `https://restcountries.com/v3.1/alpha/${code}`;
     https.get(url, (resp) => {

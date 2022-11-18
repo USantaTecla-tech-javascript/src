@@ -12,6 +12,7 @@ function getCountryInfo(code) {
 
       resp.on('end', () => {
         let country = JSON.parse(data)[0];
+        console.log("!!!!!!!!!" + country.name.common);
         resolve(country);
       });
 
