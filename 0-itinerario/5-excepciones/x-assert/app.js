@@ -8,17 +8,17 @@ class AssertionError extends Error {
         super(description);
         this.name = "AssertionError";
     }
-}
-
-function assert(value) {
-    if (!value) {
-        
-        throw new AssertionError();
+    accept(visitor) {
+        visitor.visitAssertionError(this);
     }
 }
 
+function assert(condition, description){
+    throw new AssertionError(description)
+}
+
 function factorial(value) {
-    assert(value >= 0);
+    assert(0 <= value, `Valor negativo`);
 
     let acu = 1;
     for (let i = 1; i < value; i++) {
@@ -33,3 +33,4 @@ console.writeln(factorial(5));
 // try {
 console.writeln(factorial(-1));
 // }
+
