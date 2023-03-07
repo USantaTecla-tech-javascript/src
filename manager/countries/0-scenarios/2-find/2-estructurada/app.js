@@ -19605,7 +19605,6 @@ for (let i=0; i<COUNTRIES.length && country === null; i++) {
 let name = country !== null ? country.name : "No existe";
 console.writeln(`¿Cuál es el nombre del primer país de ${region} con población superior o igual a ${population}?: ${name}`);
 
-
 region = `Americas`;
 population = 1000;
 country = null;
