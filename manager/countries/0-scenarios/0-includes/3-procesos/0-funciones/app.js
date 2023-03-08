@@ -1,8 +1,11 @@
 const { Console } = require("./console");
 
 const console = new Console();
+let country = getCountries()[212];
 console.writeln(`¿Está el país de nombre ${country.name}?: ${includes(getCountries(), country)}`);
-country = getCountries()[212];
+country = {
+  name : `Atlantida`
+}
 console.writeln(`¿Está el país de nombre ${country.name}?: ${includes(getCountries(), country)}`);
 
 function includes(countries, item) {
