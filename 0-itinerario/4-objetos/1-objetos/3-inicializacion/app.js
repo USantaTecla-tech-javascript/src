@@ -14,14 +14,14 @@ for (let property in object) {
 }
 
 let { a, b, c } = object;
-console.writeln(`${a} - ${b} - ${c}`); // 4662 - cadena
+console.writeln(`${a} - ${b} - ${c}`); // 4662 - cadena - undefined
 
 function f({ b, a }) {
     console.writeln(`${a} - ${b}`);
 }
-f(object); // cadena - 4662 
+f(object); // 4662 - cadena
 f({ a: -1, b: true }); // -1 - true
-f({ a: "aceptado", c: "ignorado" }); // que - undefined
+f({ a: "aceptado", c: "ignorado" }); // aceptado - undefined
 
 let array = [
     {
