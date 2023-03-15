@@ -13,8 +13,8 @@ for (let property in object) {
     console.writeln(typeof object[property]); // number / string 
 }
 
-let { a, b } = object;
-console.writeln(`${a} - ${b}`); // 4662 - cadena
+let { a, b, c } = object;
+console.writeln(`${a} - ${b} - ${c}`); // 4662 - cadena
 
 function f({ b, a }) {
     console.writeln(`${a} - ${b}`);
